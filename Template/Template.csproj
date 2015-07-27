@@ -181,6 +181,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoffController.cs" />
+    <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +196,9 @@
     <Compile Include="Repository\IModuleRepository.cs" />
     <Compile Include="Repository\IUserProfileRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="XerneasAuthentication.cs" />
+    <Compile Include="XerneasUserData.cs" />
+    <Compile Include="XerneasUserDataFunctionality.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

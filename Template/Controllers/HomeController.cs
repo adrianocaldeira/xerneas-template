@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Template.Filters;
 
 namespace Template.Controllers
 {
+    [Authorization(IgnoreActions = "Index")]
     public class HomeController : Controller
     {
         // GET: Home
