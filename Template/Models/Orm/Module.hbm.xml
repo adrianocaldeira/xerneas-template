@@ -11,7 +11,7 @@
     <property name="Name" length="100" not-null="true" />
     <property name="Description" length="100" />
     <property name="CssClass" length="50" />
-    <property name="Order" not-null="true" />
+    <property name="Order" column="ModuleOrder" not-null="true" />
     <property name="Created" not-null="true" />
     <property name="Updated" not-null="true" />
 
