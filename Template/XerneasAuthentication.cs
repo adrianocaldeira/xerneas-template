@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Security;
+using Newtonsoft.Json;
 using Template.Models;
 using Thunder.Web;
 
@@ -24,7 +25,7 @@ namespace Template
                 issueDate: DateTime.Now,
                 expiration: DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes),
                 isPersistent: false,
-                userData: XerneasUserData.Create(user).Json(),
+                userData: XerneasUserData.Create(user).Json(Formatting.None),
                 cookiePath: FormsAuthentication.FormsCookiePath
                 );
 

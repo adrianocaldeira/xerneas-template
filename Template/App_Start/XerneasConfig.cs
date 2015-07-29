@@ -1,4 +1,5 @@
 ﻿using System.Web.Optimization;
+using log4net.Config;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Template.XerneasConfig), "Start")]
 namespace Template
@@ -7,6 +8,8 @@ namespace Template
     {
         public static void Start()
         {
+            XmlConfigurator.Configure();
+
             BundleTable.EnableOptimizations = true;
 
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")

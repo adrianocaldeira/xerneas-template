@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 using Template.Repository;
 using Thunder.ComponentModel.DataAnnotations;

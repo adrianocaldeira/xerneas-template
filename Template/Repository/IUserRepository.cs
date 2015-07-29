@@ -33,23 +33,6 @@ namespace Template.Repository
         void UpdateLastAccess(User user);
 
         /// <summary>
-        ///     Verifica se o usuário possui acesso a uma área do sistema
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="controllerName"></param>
-        /// <param name="actionName"></param>
-        /// <param name="httpMethod"></param>
-        /// <returns></returns>
-        bool AllowAccess(int id, string controllerName, string actionName, string httpMethod);
-
-        /// <summary>
-        ///     Verifica se o usuário pode ser excluído
-        /// </summary>
-        /// <param name="id">Código</param>
-        /// <returns>Pode excluir ou não</returns>
-        bool CanDelete(int id);
-
-        /// <summary>
         ///     Verifica se o login do usuário já existe
         /// </summary>
         /// <param name="id">Código</param>
@@ -101,5 +84,15 @@ namespace Template.Repository
         ///     <see cref="User" />
         /// </param>
         new void Delete(User entity);
+
+        /// <summary>
+        ///     Verifica se o usuário possui acesso a uma área do sistema
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="controllerName"></param>
+        /// <param name="actionName"></param>
+        /// <param name="httpMethod"></param>
+        /// <returns></returns>
+        bool AllowAccess(int id, string controllerName, string actionName, string httpMethod);
     }
 }

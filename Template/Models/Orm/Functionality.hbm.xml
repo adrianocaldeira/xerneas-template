@@ -12,7 +12,7 @@
     <property name="Description" length="100" />
     <property name="Action" length="100" not-null="true" index="idx_action" />
     <property name="Controller" length="100" not-null="true" index="idx_controller"  />
-    <property name="HttpMethod" length="100" not-null="true" />
+    <property name="HttpMethod" length="100" not-null="true" index="idx_httpmethod" />
     <property name="Default" column="DefaultFunctionality" not-null="true" />
     <property name="Created" not-null="true" />
     <property name="Updated" not-null="true" />

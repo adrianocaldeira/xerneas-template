@@ -12,6 +12,7 @@
     <property name="Login" not-null="true" unique-key="idx_login_email" />
     <property name="Email" length="100" not-null="true" unique-key="idx_login_email" />
     <property name="Password" length="50" not-null="true" />
+    <property name="Salt" length="50" not-null="true" />
     <property name="Active" not-null="true"/>
     <property name="LastAccess" />
     <property name="Created" not-null="true" />

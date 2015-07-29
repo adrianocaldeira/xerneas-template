@@ -15,7 +15,7 @@
     <property name="Created" not-null="true" />
     <property name="Updated" not-null="true" />
 
-    <bag name="Childs" order-by="Ordem" lazy="true">
+    <bag name="Childs" order-by="ModuleOrder" lazy="true">
       <key column="ParentId" />
       <one-to-many class="Template.Models.Module, Template" />
     </bag>

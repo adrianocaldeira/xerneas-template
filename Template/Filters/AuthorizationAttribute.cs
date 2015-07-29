@@ -4,6 +4,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Template.Repository;
 using Thunder.Web;
 
 namespace Template.Filters
@@ -89,10 +90,8 @@ namespace Template.Filters
             var httpCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
             var authenticationTicket = FormsAuthentication.Decrypt(httpCookie.Value);
             var userData = authenticationTicket.UserData.Json<XerneasUserData>();
-            var allowAccess = userData.Functionalities.Any(x => 
-                x.Action.ToLower() == actionName.ToLower() && 
-                x.Controller.ToLower() == controllerName.ToLower() &&
-                x.HttpMethod.ToLower() == httpContext.Request.HttpMethod.ToLower());
+            var allowAccess = new UserRepository().AllowAccess(userData.Id, controllerName.ToLower(),
+                actionName.ToLower(), httpContext.Request.HttpMethod.ToLower());
 
             return allowAccess;
         }
