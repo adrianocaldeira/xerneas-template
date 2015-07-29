@@ -27,13 +27,22 @@ namespace Template.Controllers
                     seguranca.Name = "Segurança";
                     seguranca.Description = "Módulo de segurança";
                     seguranca.CssClass = "fa-lock";
+                    seguranca.Order = 0;
                     session.Save(seguranca);
 
                     var segurancaPerfil = new Module();
                     segurancaPerfil.Parent = seguranca;
-                    segurancaPerfil.Name = "Pérfil de Usuário";
-                    segurancaPerfil.Description = "Pérfil de usuários do sistema";
+                    segurancaPerfil.Name = "Perfis de Usuário";
+                    segurancaPerfil.Description = "Perfis de usuários do sistema";
+                    segurancaPerfil.Order = 0;
                     session.Save(segurancaPerfil);
+
+                    var segurancaUsuario = new Module();
+                    segurancaUsuario.Parent = seguranca;
+                    segurancaUsuario.Name = "Usuários";
+                    segurancaUsuario.Description = "Usuários do sistema";
+                    segurancaUsuario.Order = 1;
+                    session.Save(segurancaUsuario);
 
                     transaction.Commit();
                 }
