@@ -18,3 +18,7 @@
         padding: 42px 30px 0 30px;
     }
 }
+
+#form-login ul {
+    padding-left: 15px;
+}

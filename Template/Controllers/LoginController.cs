@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Web.Security;
-using Template.Models;
+﻿using System.Web.Mvc;
+using Template.Models.Views.Login;
 using Template.Repository;
+using Thunder;
 using Thunder.Web.Mvc;
-using Controller = System.Web.Mvc.Controller;
+using Controller = Thunder.Web.Mvc.Controller;
 
 namespace Template.Controllers
 {
@@ -16,25 +15,38 @@ namespace Template.Controllers
         }
         public IUserRepository UserRepository { get; set; }
         
-
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(new Index
+            {
+                ReturnUrl = string.IsNullOrWhiteSpace(Request["ReturnUrl"]) ? Url.Content("~/") : Request["ReturnUrl"]
+            });
         }
 
+        [HttpPost]
         [SessionPerRequest]
-        public ActionResult Authentication(string login, string password, string returnUrl)
+        [ValidateAntiForgeryToken]
+        public ActionResult Authentication(Index model)
         {
-            var user = UserRepository.Find(login, password);
+            if (!ModelState.IsValid) return Notify(NotifyType.Warning, ModelState);
 
-            XerneasAuthentication.SetAuthCookie(user);
+            var user = UserRepository.Find(model.UserName, model.Password);
 
-            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+            if (user == null)
             {
-                return Redirect(returnUrl);
+                ModelState.AddModelError("UserName", "Dados de acesso informado estão inválidos!");
+            }
+            else
+            {
+                XerneasAuthentication.SetAuthCookie(user);
+
+                UserRepository.UpdateLastAccess(user);
+
+                return Success(model.ReturnUrl);
             }
 
-            return Redirect("~/");
+            return Notify(NotifyType.Warning, ModelState);
         }
     }
 }

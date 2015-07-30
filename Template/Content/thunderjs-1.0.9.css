@@ -1,0 +1,757 @@
+﻿.ui-widget-overlay
+{
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: #000000;
+}
+
+/*
+Estilos de modal
+*/
+.thunder-modal
+{
+    z-index: 1040;
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    outline: none;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.thunder-modal-iframe
+{
+    padding: 6px;
+}
+
+/*
+Estilos de loading de modal
+*/
+.thunder-modal-loading
+{
+    position: absolute;
+    width: 120px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -7.5px;
+}
+
+.thunder-modal-loading-item
+{
+    position: absolute;
+    top: 0;
+    background-color: #DDDDDD;
+    width: 15px;
+    height: 15px;
+    -moz-animation-name: bounce_thunder_modal_loading;
+    -moz-animation-duration: 1.3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -moz-transform: scale(.3);
+    -moz-border-radius: 10px;
+    -webkit-animation-name: bounce_thunder_modal_loading;
+    -webkit-animation-duration: 1.3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -webkit-transform: scale(.3);
+    -webkit-border-radius: 10px;
+    -ms-animation-name: bounce_thunder_modal_loading;
+    -ms-animation-duration: 1.3s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -ms-transform: scale(.3);
+    -ms-border-radius: 10px;
+    -o-animation-name: bounce_thunder_modal_loading;
+    -o-animation-duration: 1.3s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    -o-transform: scale(.3);
+    -o-border-radius: 10px;
+    animation-name: bounce_thunder_modal_loading;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+    transform: scale(.3);
+    border-radius: 10px;
+}
+
+.thunder-modal-loading-item-1
+{
+    left: 0;
+    -moz-animation-delay: 0.52s;
+    -webkit-animation-delay: 0.52s;
+    -ms-animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+    animation-delay: 0.52s;
+}
+
+.thunder-modal-loading-item-2
+{
+    left: 15px;
+    -moz-animation-delay: 0.65s;
+    -webkit-animation-delay: 0.65s;
+    -ms-animation-delay: 0.65s;
+    -o-animation-delay: 0.65s;
+    animation-delay: 0.65s;
+}
+
+.thunder-modal-loading-item-3
+{
+    left: 30px;
+    -moz-animation-delay: 0.78s;
+    -webkit-animation-delay: 0.78s;
+    -ms-animation-delay: 0.78s;
+    -o-animation-delay: 0.78s;
+    animation-delay: 0.78s;
+}
+
+.thunder-modal-loading-item-4
+{
+    left: 45px;
+    -moz-animation-delay: 0.91s;
+    -webkit-animation-delay: 0.91s;
+    -ms-animation-delay: 0.91s;
+    -o-animation-delay: 0.91s;
+    animation-delay: 0.91s;
+}
+
+.thunder-modal-loading-item-5
+{
+    left: 60px;
+    -moz-animation-delay: 1.04s;
+    -webkit-animation-delay: 1.04s;
+    -ms-animation-delay: 1.04s;
+    -o-animation-delay: 1.04s;
+    animation-delay: 1.04s;
+}
+
+.thunder-modal-loading-item-6
+{
+    left: 75px;
+    -moz-animation-delay: 1.17s;
+    -webkit-animation-delay: 1.17s;
+    -ms-animation-delay: 1.17s;
+    -o-animation-delay: 1.17s;
+    animation-delay: 1.17s;
+}
+
+.thunder-modal-loading-item-7
+{
+    left: 90px;
+    -moz-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
+    -ms-animation-delay: 1.3s;
+    -o-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+}
+
+.thunder-modal-loading-item-8
+{
+    left: 105px;
+    -moz-animation-delay: 1.43s;
+    -webkit-animation-delay: 1.43s;
+    -ms-animation-delay: 1.43s;
+    -o-animation-delay: 1.43s;
+    animation-delay: 1.43s;
+}
+
+@-moz-keyframes bounce_thunder_modal_loading
+{
+    0%
+    {
+        -moz-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -moz-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes bounce_thunder_modal_loading
+{
+    0%
+    {
+        -webkit-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -webkit-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-ms-keyframes bounce_thunder_modal_loading
+{
+    0%
+    {
+        -ms-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -ms-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-o-keyframes bounce_thunder_modal_loading
+{
+    0%
+    {
+        -o-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -o-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@keyframes bounce_thunder_modal_loading
+{
+    0%
+    {
+        transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+/*
+Estilos de modal
+*/
+[data-window="modal"] .modal-thunder-header {
+    position: absolute;
+    top: 0;
+    height: 56px;
+    width: 100%;
+}
+
+[data-window="modal"] .modal-thunder-body {
+    position: fixed;
+    overflow: auto;
+    top: 56px;
+    bottom: 73px;
+    width: 100%;
+}
+
+[data-window="modal"] .modal-thunder-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 73px;
+}
+
+/*
+Estilos de alerta
+*/
+.thunder-alert ul {
+    padding-left: 10px;
+}
+
+.thunder-alert-success .modal-header, .thunder-alert-info .modal-header, .thunder-alert-warning .modal-header, .thunder-alert-danger .modal-header
+{
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.thunder-alert-success .modal-header
+{
+    background: #DFF0D8;
+}
+
+.thunder-alert-success .modal-header .modal-title {
+    color: #468847;
+}
+
+.thunder-alert-info .modal-header
+{
+    background: #D9EDF7;
+}
+
+.thunder-alert-info .modal-header .modal-title {
+    color: #3A87AD;
+}
+
+.thunder-alert-warning .modal-header
+{
+    background: #FCF8E3;
+}
+
+.thunder-alert-warning .modal-header .modal-title {
+    color: #C09853;
+}
+
+.thunder-alert-danger .modal-header
+{
+    background: #F2DEDE;
+}
+
+.thunder-alert-danger .modal-header .modal-title {
+    color: #B94A48;
+}
+
+
+/*
+Estilos de grid
+*/
+.thunder-grid {
+    position: relative;
+    min-height: 100px
+}
+
+.thunder-grid ul.pagination {
+    margin-top: 0; 
+    margin-bottom: 0;
+}
+
+/*
+Estilos de loading de grid
+*/
+.thunder-grid-loading
+{
+    position: absolute;
+    width: 120px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -7.5px;
+    display: none;
+}
+
+.thunder-grid-loading-item
+{
+    position: absolute;
+    top: 0;
+    background-color: #DDDDDD;
+    width: 15px;
+    height: 15px;
+    -moz-animation-name: bounce_thunder_modal_loading;
+    -moz-animation-duration: 1.3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -moz-transform: scale(.3);
+    -moz-border-radius: 10px;
+    -webkit-animation-name: bounce_thunder_modal_loading;
+    -webkit-animation-duration: 1.3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -webkit-transform: scale(.3);
+    -webkit-border-radius: 10px;
+    -ms-animation-name: bounce_thunder_modal_loading;
+    -ms-animation-duration: 1.3s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -ms-transform: scale(.3);
+    -ms-border-radius: 10px;
+    -o-animation-name: bounce_thunder_modal_loading;
+    -o-animation-duration: 1.3s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    -o-transform: scale(.3);
+    -o-border-radius: 10px;
+    animation-name: bounce_thunder_modal_loading;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+    transform: scale(.3);
+    border-radius: 10px;
+}
+
+.thunder-grid-loading-item-1
+{
+    left: 0;
+    -moz-animation-delay: 0.52s;
+    -webkit-animation-delay: 0.52s;
+    -ms-animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+    animation-delay: 0.52s;
+}
+
+.thunder-grid-loading-item-2
+{
+    left: 15px;
+    -moz-animation-delay: 0.65s;
+    -webkit-animation-delay: 0.65s;
+    -ms-animation-delay: 0.65s;
+    -o-animation-delay: 0.65s;
+    animation-delay: 0.65s;
+}
+
+.thunder-grid-loading-item-3
+{
+    left: 30px;
+    -moz-animation-delay: 0.78s;
+    -webkit-animation-delay: 0.78s;
+    -ms-animation-delay: 0.78s;
+    -o-animation-delay: 0.78s;
+    animation-delay: 0.78s;
+}
+
+.thunder-grid-loading-item-4
+{
+    left: 45px;
+    -moz-animation-delay: 0.91s;
+    -webkit-animation-delay: 0.91s;
+    -ms-animation-delay: 0.91s;
+    -o-animation-delay: 0.91s;
+    animation-delay: 0.91s;
+}
+
+.thunder-grid-loading-item-5
+{
+    left: 60px;
+    -moz-animation-delay: 1.04s;
+    -webkit-animation-delay: 1.04s;
+    -ms-animation-delay: 1.04s;
+    -o-animation-delay: 1.04s;
+    animation-delay: 1.04s;
+}
+
+.thunder-grid-loading-item-6
+{
+    left: 75px;
+    -moz-animation-delay: 1.17s;
+    -webkit-animation-delay: 1.17s;
+    -ms-animation-delay: 1.17s;
+    -o-animation-delay: 1.17s;
+    animation-delay: 1.17s;
+}
+
+.thunder-grid-loading-item-7
+{
+    left: 90px;
+    -moz-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
+    -ms-animation-delay: 1.3s;
+    -o-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+}
+
+.thunder-grid-loading-item-8
+{
+    left: 105px;
+    -moz-animation-delay: 1.43s;
+    -webkit-animation-delay: 1.43s;
+    -ms-animation-delay: 1.43s;
+    -o-animation-delay: 1.43s;
+    animation-delay: 1.43s;
+}
+
+@-moz-keyframes bounce_thunder_grid_loading
+{
+    0%
+    {
+        -moz-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -moz-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes bounce_thunder_grid_loading
+{
+    0%
+    {
+        -webkit-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -webkit-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-ms-keyframes bounce_thunder_grid_loading
+{
+    0%
+    {
+        -ms-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -ms-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-o-keyframes bounce_thunder_grid_loading
+{
+    0%
+    {
+        -o-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -o-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@keyframes bounce_thunder_grid_loading
+{
+    0%
+    {
+        transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+/*
+Estilos de loading de form
+*/
+.thunder-ajax-form-loading
+{
+    position: absolute;
+    width: 120px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -7.5px;
+    display: none;
+}
+
+.thunder-ajax-form-loading-item
+{
+    position: absolute;
+    top: 0;
+    background-color: #DDDDDD;
+    width: 15px;
+    height: 15px;
+    -moz-animation-name: bounce_thunder_ajax_form_loading;
+    -moz-animation-duration: 1.3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -moz-transform: scale(.3);
+    -moz-border-radius: 10px;
+    -webkit-animation-name: bounce_thunder_ajax_form_loading;
+    -webkit-animation-duration: 1.3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -webkit-transform: scale(.3);
+    -webkit-border-radius: 10px;
+    -ms-animation-name: bounce_thunder_ajax_form_loading;
+    -ms-animation-duration: 1.3s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -ms-transform: scale(.3);
+    -ms-border-radius: 10px;
+    -o-animation-name: bounce_thunder_ajax_form_loading;
+    -o-animation-duration: 1.3s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    -o-transform: scale(.3);
+    -o-border-radius: 10px;
+    animation-name: bounce_thunder_ajax_form_loading;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+    transform: scale(.3);
+    border-radius: 10px;
+}
+
+.thunder-ajax-form-loading-item-1
+{
+    left: 0;
+    -moz-animation-delay: 0.52s;
+    -webkit-animation-delay: 0.52s;
+    -ms-animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+    animation-delay: 0.52s;
+}
+
+.thunder-ajax-form-loading-item-2
+{
+    left: 15px;
+    -moz-animation-delay: 0.65s;
+    -webkit-animation-delay: 0.65s;
+    -ms-animation-delay: 0.65s;
+    -o-animation-delay: 0.65s;
+    animation-delay: 0.65s;
+}
+
+.thunder-ajax-form-loading-item-3
+{
+    left: 30px;
+    -moz-animation-delay: 0.78s;
+    -webkit-animation-delay: 0.78s;
+    -ms-animation-delay: 0.78s;
+    -o-animation-delay: 0.78s;
+    animation-delay: 0.78s;
+}
+
+.thunder-ajax-form-loading-item-4
+{
+    left: 45px;
+    -moz-animation-delay: 0.91s;
+    -webkit-animation-delay: 0.91s;
+    -ms-animation-delay: 0.91s;
+    -o-animation-delay: 0.91s;
+    animation-delay: 0.91s;
+}
+
+.thunder-ajax-form-loading-item-5
+{
+    left: 60px;
+    -moz-animation-delay: 1.04s;
+    -webkit-animation-delay: 1.04s;
+    -ms-animation-delay: 1.04s;
+    -o-animation-delay: 1.04s;
+    animation-delay: 1.04s;
+}
+
+.thunder-ajax-form-loading-item-6
+{
+    left: 75px;
+    -moz-animation-delay: 1.17s;
+    -webkit-animation-delay: 1.17s;
+    -ms-animation-delay: 1.17s;
+    -o-animation-delay: 1.17s;
+    animation-delay: 1.17s;
+}
+
+.thunder-ajax-form-loading-item-7
+{
+    left: 90px;
+    -moz-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
+    -ms-animation-delay: 1.3s;
+    -o-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+}
+
+.thunder-ajax-form-loading-item-8
+{
+    left: 105px;
+    -moz-animation-delay: 1.43s;
+    -webkit-animation-delay: 1.43s;
+    -ms-animation-delay: 1.43s;
+    -o-animation-delay: 1.43s;
+    animation-delay: 1.43s;
+}
+
+@-moz-keyframes bounce_thunder_ajax_form_loading
+{
+    0%
+    {
+        -moz-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -moz-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes bounce_thunder_ajax_form_loading
+{
+    0%
+    {
+        -webkit-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -webkit-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-ms-keyframes bounce_thunder_ajax_form_loading
+{
+    0%
+    {
+        -ms-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -ms-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@-o-keyframes bounce_thunder_ajax_form_loading
+{
+    0%
+    {
+        -o-transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        -o-transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+@keyframes bounce_thunder_ajax_form_loading
+{
+    0%
+    {
+        transform: scale(1);
+        background-color: #DDDDDD;
+    }
+
+    100%
+    {
+        transform: scale(.3);
+        background-color: #FFFFFF;
+    }
+}
+
+/*
+Estilo 
+*/
+.thunder-ajax-form-error {
+    border: solid 1px #f4b2b2 !important;
+}

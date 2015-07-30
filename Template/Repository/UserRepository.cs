@@ -54,7 +54,16 @@ namespace Template.Repository
         /// <param name="user"></param>
         public void UpdateLastAccess(User user)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var userDb = Session.Get<User>(user.Id);
+
+                userDb.LastAccess = DateTime.Now;
+
+                Session.Update(userDb);
+
+                transaction.Commit();
+            }
         }
 
         /// <summary>
