@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using NHibernate.Criterion;
+﻿using System.ComponentModel.DataAnnotations;
 using Thunder.Model;
 
 namespace Template.Models.Filters
@@ -28,6 +26,11 @@ namespace Template.Models.Filters
         /// </summary>
         [Display(Name = "Nome")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Recupera ou define status
+        /// </summary>
+        public bool? Status { get; set; }
 
         /// <summary>
         ///     Recupera ou define <see cref="UserProfile" />
@@ -63,17 +66,6 @@ namespace Template.Models.Filters
         public bool ByActive
         {
             get { return Active.HasValue; }
-        }
-
-        /// <summary>
-        ///     Critérios
-        /// </summary>
-        /// <returns></returns>
-        public IList<ICriterion> Criterions()
-        {
-            var criterions = new List<ICriterion>();
-
-            return criterions;
         }
     }
 }

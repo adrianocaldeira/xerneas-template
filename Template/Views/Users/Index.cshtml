@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using Template.Helpers
+@model Template.Models.Views.Users.Index
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -13,14 +14,76 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Default Panel
+                <div class="panel-title">
+                    <i class="fa fa-filter"></i> Filtro
+                </div>
             </div>
             <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Filter.Profile.Id)
+                            @Html.DropDownListFor(x => x.Filter.Profile.Id, Model.Profiles, new {@class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Filter.Name)
+                            @Html.TextBoxFor(x => x.Filter.Name, new {@class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Filter.Status)
+                            @Html.StatusFor(x => x.Filter.Status, "Todos", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary btn-block">Filtrar</button>
+                    </div>                    
+                </div>
             </div>
-            <div class="panel-footer">
-                Panel Footer
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="fa fa-table"></i> Resultado
+                </div>
             </div>
-        </div>        
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
