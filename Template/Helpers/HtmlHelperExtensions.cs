@@ -8,6 +8,7 @@ namespace Template.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        #region StatusFor
         public static MvcHtmlString StatusFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> expression, string optionLabel)
         {
@@ -77,5 +78,6 @@ namespace Template.Helpers
 
             return MvcHtmlString.Create(dropdown.ToString(TagRenderMode.Normal));
         }
+        #endregion
     }
 }
