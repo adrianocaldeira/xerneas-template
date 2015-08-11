@@ -1,0 +1,72 @@
+﻿@model Template.Models.Views.Users.Form
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Usuários
+            <span class="pull-right">
+                <a class="btn btn-primary" href="@Url.Action("Index")" title="Voltar"><i class="fa fa-reply-all"></i></a>
+            </span>
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="fa fa-info"></i> Dados Cadastrais
+                </div>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Save", "Users", FormMethod.Post, new { id = "form-user" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.User.Id)
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Profile.Id)
+                                @Html.DropDownListFor(x => x.User.Profile.Id, Model.Profiles, new {@class = "form-control"})
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Name)
+                                @Html.Thunder().TextBoxFor(x => x.User.Name, new {@class = "form-control"})
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Email)
+                                @Html.Thunder().TextBoxFor(x => x.User.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Login)
+                                @Html.Thunder().TextBoxFor(x => x.User.Login, new { @class = "form-control", autocomplete = "off" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Password)
+                                @Html.Thunder().PasswordFor(x => x.User.Password, new { @class = "form-control", autocomplete = "off" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.User.Active)
+                                @Html.StatusFor(x => x.User.Active, "Selecione", new { @class = "form-control" })
+                            </div>
+                        </div>           
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

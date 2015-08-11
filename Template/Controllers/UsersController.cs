@@ -2,10 +2,12 @@
 using System.Globalization;
 using System.Web.Mvc;
 using Template.Filters;
+using Template.Models;
 using Template.Models.Filters;
 using Template.Models.Views.Users;
 using Template.Repository;
 using Thunder;
+using Thunder.Extensions;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 
@@ -61,13 +63,30 @@ namespace Template.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            return Content("New");
+            return View("Form", new Form
+            {
+                User = new User{Active = true},
+                Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
+                    new SelectListItem { Selected = true, Text = "Todos", Value = "0" })
+            });
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View("Form");
+            var user = UserRepository.Find(id);
+
+            if (user == null)
+            {
+                return new HttpNotFoundResult("Usuário {0} não foi encontrado.".With(id));
+            }
+
+            return View("Form", new Form
+            {
+                User = user,
+                Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
+                    new SelectListItem { Selected = true, Text = "Todos", Value = "0" })
+            });
         }
     }
 }
