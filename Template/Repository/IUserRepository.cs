@@ -94,5 +94,12 @@ namespace Template.Repository
         /// <param name="httpMethod"></param>
         /// <returns></returns>
         bool AllowAccess(int id, string controllerName, string actionName, string httpMethod);
+
+        /// <summary>
+        /// Pode excluir
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        bool CanDelete(int id);
     }
 }

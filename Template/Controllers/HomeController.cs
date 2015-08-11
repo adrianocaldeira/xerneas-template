@@ -48,6 +48,15 @@ namespace Template.Controllers
                     });
                     modulo.Functionalities.Add(new Functionality
                     {
+                        Action = "Delete",
+                        Controller = "Modules",
+                        Description = "Exclusão de módulos do sistema",
+                        Module = modulo,
+                        HttpMethod = "DELETE",
+                        Name = "Excluir"
+                    });
+                    modulo.Functionalities.Add(new Functionality
+                    {
                         Action = "New",
                         Controller = "Modules",
                         Description = "Criação de módulo do sistema",
@@ -108,6 +117,15 @@ namespace Template.Controllers
                     });
                     segurancaPerfil.Functionalities.Add(new Functionality
                     {
+                        Action = "Delete",
+                        Controller = "UserProfiles",
+                        Description = "Exclusão de perfis de usuário do sistema",
+                        Module = segurancaPerfil,
+                        HttpMethod = "DELETE",
+                        Name = "Excluir"
+                    });
+                    segurancaPerfil.Functionalities.Add(new Functionality
+                    {
                         Action = "New",
                         Controller = "UserProfiles",
                         Description = "Criação de perfil de usuário do sistema",
@@ -158,6 +176,15 @@ namespace Template.Controllers
                         Module = segurancaUsuario,
                         HttpMethod = "POST",
                         Name = "Listar"
+                    });
+                    segurancaUsuario.Functionalities.Add(new Functionality
+                    {
+                        Action = "Delete",
+                        Controller = "Users",
+                        Description = "Exclusão de usuário do sistema",
+                        Module = segurancaUsuario,
+                        HttpMethod = "Delete",
+                        Name = "Excluir"
                     });
                     segurancaUsuario.Functionalities.Add(new Functionality
                     {

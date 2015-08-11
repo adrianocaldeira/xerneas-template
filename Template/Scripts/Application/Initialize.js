@@ -1,5 +1,18 @@
 ﻿app.settings = {
     root: "",
+    getMessageType: function (type) {
+        if (type === 0) {
+            return "success";
+        } else if (type === 1) {
+            return "info";
+        } else if (type === 2) {
+            return "warning";
+        } else if (type === 3) {
+            return "danger";
+        } else {
+            return "";
+        }
+    },
     init: function () {
         $("[data-module]").each(function () {
             var $this = $(this);
@@ -10,22 +23,65 @@
             if (app[module] && app[module][action]) app[module][action].call($this, parameters);
         });
 
-        $(".data-bind").each(function() {
-            var $this = $(this);
+        $(".grid-bind").each(function () {
+            var $grid = $(this);
             var options = {
-                form: $this.data("form") || "#filter",
+                form: $grid.data("form") || "#filter",
                 load: true,
-                fieldPrefix: $this.data("field-prefix") || "",
-                pageSize: $this.data("page-size") || 25
+                fieldPrefix: $grid.data("field-prefix") || "Filter",
+                pageSize: $grid.data("page-size") || 25,
+                loadOnDelete: true,
+                successOnDelete: $grid.data("success-on-delete") || undefined
             };
 
-            if ($this.data("load") !== undefined) {
-                options.load = $this.data("load") === "true";
+            if ($grid.data("load") !== undefined) {
+                options.load = $grid.data("load") === "true";
             }
 
-            $.thunder.grid($this, options);
+            if ($grid.data("load-on-delete") !== undefined) {
+                options.loadOnDelete = $grid.data("load-on-delete") === "true";
+            }
+
+            if (options.successOnDelete !== undefined && window[options.successOnDelete] !== undefined) {
+                options.successOnDelete = window[options.successOnDelete];
+            }
+
+            $.thunder.grid($grid, options);
+
+            $grid.on("click", ".btn-delete-row", function(e) {
+                var $button = $(this);
+
+                e.preventDefault();
+
+                $.thunder.confirm("Deseja realmente excluir esse registro?", {
+                    onYes: function() {
+                        $.ajax({
+                            url: $button.is("a") ? $button.attr("href") : $button.data("url"),
+                            type: "delete",
+                            headers: {
+                                "Url-Parent": window.location.pathname
+                            },
+                            success: function (result) {
+                                if (result.type === 0) {
+                                    if (options.loadOnDelete) {
+                                        $.thunder.grid($grid, "reload");
+                                    }
+
+                                    if ($.isFunction(options.successOnDelete)) {
+                                        options.successOnDelete.call($button, $grid);
+                                    }
+                                } else {
+                                    $.thunder.alert(result.data || result.messages, {
+                                        type: app.settings.getMessageType(result.type)
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
         });
-        
+       
         $.ajaxSetup({
             statusCode: {
                 401: function () {

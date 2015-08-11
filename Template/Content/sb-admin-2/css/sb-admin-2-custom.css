@@ -19,6 +19,35 @@
     }
 }
 
+.align-center {
+    text-align: center !important;
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}
+
+.align-left {
+    text-align: left !important;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+
 #form-login ul {
     padding-left: 15px;
+}
+
+.thunder-grid {
+    min-height: auto;
+}
+
+.thunder-grid-content .table {
+    margin-bottom: 15px;
+}
+
+.thunder-grid-content .alert {
+    margin-bottom: 0;
 }

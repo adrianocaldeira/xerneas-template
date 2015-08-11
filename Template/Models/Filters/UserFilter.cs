@@ -28,11 +28,6 @@ namespace Template.Models.Filters
         public string Name { get; set; }
 
         /// <summary>
-        /// Recupera ou define status
-        /// </summary>
-        public bool? Status { get; set; }
-
-        /// <summary>
         ///     Recupera ou define <see cref="UserProfile" />
         /// </summary>
         [Display(Name = "Perfil")]
@@ -41,7 +36,7 @@ namespace Template.Models.Filters
         /// <summary>
         ///     Recupera ou defino ativo
         /// </summary>
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public bool? Active { get; set; }
 
         /// <summary>

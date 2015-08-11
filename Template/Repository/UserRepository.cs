@@ -4,6 +4,7 @@ using NHibernate.Linq;
 using Template.Models;
 using Template.Models.Filters;
 using Thunder.Collections;
+using Thunder.Collections.Extensions;
 using Thunder.Data;
 using Thunder.Data.Pattern;
 using Thunder.Security;
@@ -97,7 +98,20 @@ namespace Template.Repository
         /// <returns>Lista de <see cref="User" /></returns>
         public IPaging<User> Page(UserFilter filter)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var query = Session.Query<User>();
+
+                if (filter.ByActive) query = query.Where(x => x.Active == filter.Active.Value);
+                if (filter.ByName) query = query.Where(x => x.Name.Contains(filter.Name));
+                if (filter.ByProfile) query = query.Where(x => x.Profile.Id == filter.Profile.Id);
+
+                var users = query.OrderBy(x => x.Name).Paging(filter.CurrentPage, filter.PageSize);
+
+                transaction.Commit();
+
+                return users;
+            }
         }
 
         /// <summary>
@@ -130,6 +144,29 @@ namespace Template.Repository
                             && y.HttpMethod.ToLower() == httpMethod));
 
                 return count > 0;
+            }
+        }
+
+        /// <summary>
+        /// Pode excluir
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool CanDelete(int id)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var canDelete = false;
+                var user = Session.Get<User>(id);
+
+                if (user.Id != 1)
+                {
+                    canDelete = true;
+                }
+
+                transaction.Commit();
+
+                return canDelete;
             }
         }
     }
