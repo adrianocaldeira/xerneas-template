@@ -84,7 +84,7 @@
        
         $.ajaxSetup({
             statusCode: {
-                401: function () {
+                403: function () {
                     $.thunder.alert("Você não possui permissão de acesso à esta funcionalidade!", {
                         type: "warning"
                     });
