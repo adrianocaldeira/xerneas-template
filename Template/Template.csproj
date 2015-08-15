@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.nestable.css" />
     <Content Include="Content\sb-admin-2\css\sb-admin-2-custom.css" />
     <Content Include="Content\sb-admin-2\css\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2\css\timeline.css" />
@@ -219,6 +220,7 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.nestable.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\thunderjs-1.0.9.js" />
     <Content Include="Scripts\thunderjs.min-1.0.9.js" />
@@ -231,6 +233,7 @@
     <Compile Include="Controllers\LayoutsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoffController.cs" />
+    <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -269,6 +272,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\_List.cshtml" />
     <Content Include="Views\Users\Form.cshtml" />
+    <None Include="Views\Modules\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

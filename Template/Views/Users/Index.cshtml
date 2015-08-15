@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                @using (Html.Thunder().Grid(Url.Action("List"), UserFilter.DefaultPageSize, new { @class = "grid-bind"}))
+                @using (Html.Thunder().Grid(Url.Action("List"), UserFilter.DefaultPageSize, new { data_control = "grid"}))
                 {
                 }
             </div>

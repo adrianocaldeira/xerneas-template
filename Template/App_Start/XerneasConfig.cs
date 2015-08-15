@@ -18,6 +18,7 @@ namespace Template
                     , "~/scripts/bootstrap.min.js"
                     , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
                     , "~/content/sb-admin-2/js/sb-admin-2.js"
+                    , "~/scripts/jquery.nestable.js"
                     , "~/scripts/thunderjs-1.0.9.js"
                     , "~/scripts/application/app.js"
                     , "~/scripts/application/initialize.js"
@@ -25,8 +26,10 @@ namespace Template
                     ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/bundle")
-                .Include("~/content/bootstrap.min.css")
-                .Include("~/content/thunderjs-1.0.9.css"));
+                .Include("~/content/bootstrap.min.css"
+                , "~/content/thunderjs-1.0.9.css"
+                , "~/content/jquery.nestable.css"
+                ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/sb-admin-2/dist/metisMenu/css/bundle")
                 .Include("~/content/sb-admin-2/dist/metisMenu/css/metisMenu.min.css"));

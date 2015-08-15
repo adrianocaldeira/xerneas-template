@@ -42,7 +42,17 @@
             });
         });
 
-        $(".grid-bind").each(function () {
+        $("[data-control=\"nestable\"]").each(function () {
+            var $nestable = $(this);
+
+            $nestable.nestable({
+                maxDepth: 2
+            }).on('change', function () {
+                console.log(this);
+            });;
+        });
+
+        $("[data-control=\"grid\"]").each(function () {
             var $grid = $(this);
             var options = {
                 form: $grid.data("form") || "#filter",
