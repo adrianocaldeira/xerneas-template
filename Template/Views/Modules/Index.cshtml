@@ -28,9 +28,9 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="dd" data-control="nestable">
+        <div class="dd" data-control="nestable" data-max-depth="4" data-organize-url="@Url.Action("Organazer")">
             <ol class="dd-list">
-                @TreeView(Model.OrderBy(x=>x.Order))
+                @TreeView(Model.OrderBy(x => x.Order))
             </ol>
         </div>
     </div>

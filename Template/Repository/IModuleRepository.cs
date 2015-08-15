@@ -23,5 +23,11 @@ namespace Template.Repository
         /// </param>
         /// <returns>Lista de <see cref="Module" /></returns>
         IList<Module> Find(User user);
+
+        /// <summary>
+        /// Organiza módulos
+        /// </summary>
+        /// <param name="modules"></param>
+        void Organizer(IList<Module> modules);
     }
 }

@@ -46,9 +46,22 @@
             var $nestable = $(this);
 
             $nestable.nestable({
-                maxDepth: 2
-            }).on('change', function () {
-                console.log(this);
+                maxDepth: $nestable.data("max-depth")
+            }).on("change", function () {
+                var json = JSON.stringify($nestable.nestable("serialize"));
+
+                if ($nestable.data("json") !== json) {
+                    $.ajax({
+                        url: $nestable.data("organize-url"),
+                        type: "post",
+                        data: {
+                            json: json
+                        },
+                        success: function () {
+                            $nestable.data("json", json);
+                        }
+                    });
+                }
             });;
         });
 

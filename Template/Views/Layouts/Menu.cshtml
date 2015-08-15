@@ -21,11 +21,13 @@
                             <ul class="nav nav-second-level">
                                 @foreach (var child in module.Childs.OrderBy(x => x.Order))
                                 {
+                                    var url = child.DefaultFunctionality  != null ?
+                                        Url.Action(child.DefaultFunctionality.Action, child.DefaultFunctionality.Controller) : "#";
                                     <li>
-                                        <a href="@Url.Action(child.DefaultFunctionality.Action, child.DefaultFunctionality.Controller)">@child.Name</a>
+                                        <a href="@url">@child.Name</a>
                                     </li>
                                 }
-               
+
                             </ul>
                         }
                     </li>

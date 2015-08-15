@@ -2,6 +2,7 @@
 using System.Linq;
 using Template.Models;
 using NHibernate.Linq;
+using NHibernate.Util;
 
 namespace Template.Repository
 {
@@ -38,6 +39,64 @@ namespace Template.Repository
                 transaction.Commit();
 
                 return modules;
+            }
+        }
+
+        /// <summary>
+        /// Organiza módulos
+        /// </summary>
+        /// <param name="modules"></param>
+        public void Organizer(IList<Module> modules)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                foreach (var module in modules)
+                {
+                    var moduleDb = Session.Get<Module>(module.Id);
+                    
+                    Organizer(moduleDb, module.Childs);
+                    
+                    moduleDb.Order = module.Order;
+                }
+
+                transaction.Commit();
+            }
+        }
+
+        private void Organizer(Module moduleDb, IList<Module> modules)
+        {
+            if (modules.Any())
+            {
+                foreach (var child in modules)
+                {
+                    var moduleChildDb = Session.Get<Module>(child.Id);
+
+                    moduleChildDb.Order = child.Order;
+
+                    if (moduleChildDb.Parent != null && !moduleChildDb.Parent.Equals(moduleDb))
+                    {
+                        moduleChildDb.Parent.Childs.Remove(moduleChildDb);
+                        moduleChildDb.Parent = moduleDb;
+
+                        moduleDb.Childs.Add(moduleChildDb);
+                    }
+                    else if (moduleChildDb.Parent == null)
+                    {
+                        moduleChildDb.Parent = moduleDb;
+                        moduleDb.Childs.Add(moduleChildDb);
+                    }
+
+                    Organizer(moduleChildDb, child.Childs);
+                }
+            }
+            else
+            {
+                foreach (var child in moduleDb.Childs.ToList())
+                {
+                    child.Parent.Childs.Remove(child);
+                    child.Parent = null;
+                }
+                ;   
             }
         }
 
