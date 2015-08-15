@@ -55,7 +55,7 @@ namespace Template.Models
         /// <summary>
         ///     Recupera ou define status
         /// </summary>
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public virtual bool Active { get; set; }
 
         /// <summary>

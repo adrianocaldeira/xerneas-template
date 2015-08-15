@@ -18,7 +18,11 @@
                 </div>
             </div>
             <div class="panel-body">
-                @using (Html.BeginForm("Save", "Users", FormMethod.Post, new { id = "form-user" }))
+                @using (Html.BeginForm("Save", "Users", FormMethod.Post, new
+                {
+                    data_control = "form",
+                    data_redirect_on_success = Url.Action("Index")
+                }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(x => x.User.Id)
@@ -56,7 +60,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Active)
-                                @Html.StatusFor(x => x.User.Active, "Selecione", new { @class = "form-control" })
+                                @Html.StatusFor(x => x.User.Active, "Selecione", Model.User.Active, new { @class = "form-control" })
                             </div>
                         </div>           
                     </div>

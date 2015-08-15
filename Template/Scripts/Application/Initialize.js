@@ -23,6 +23,25 @@
             if (app[module] && app[module][action]) app[module][action].call($this, parameters);
         });
 
+        $("[data-control=\"form\"]").each(function() {
+            var $form = $(this);
+            var $message = $form.data("message-selector") === undefined ? null : $form.data("message-selector");
+
+            $.thunder.ajaxForm($form, {
+                message: {
+                    selector: $message
+                },
+                success: function (result) {
+                    $.thunder.alert(result.data, {
+                        type: "success",
+                        onOk: function () {
+                            window.location.href = $form.data("redirect-on-success");
+                        }
+                    });
+                }
+            });
+        });
+
         $(".grid-bind").each(function () {
             var $grid = $(this);
             var options = {

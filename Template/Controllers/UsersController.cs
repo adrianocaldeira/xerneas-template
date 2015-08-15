@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
 using Template.Filters;
@@ -67,7 +68,7 @@ namespace Template.Controllers
             {
                 User = new User{Active = true},
                 Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
-                    new SelectListItem { Selected = true, Text = "Todos", Value = "0" })
+                    new SelectListItem { Selected = true, Text = "Selecione", Value = "" })
             });
         }
 
@@ -85,8 +86,32 @@ namespace Template.Controllers
             {
                 User = user,
                 Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
-                    new SelectListItem { Selected = true, Text = "Todos", Value = "0" })
+                    new SelectListItem { Selected = true, Text = "Selecione", Value = "" })
             });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save([Bind(Prefix = "User")] User model)
+        {
+            var exclude = new List<string> {"User.Profile.Name", "User.Profile.Functionalities"};
+
+            if (!model.IsNew()) exclude.Add("User.Password");
+
+            ExcludePropertiesInValidation(exclude.ToArray());
+
+            if (!model.IsValid(ModelState, UserRepository)) return Notify(NotifyType.Warning, ModelState);
+
+            if (model.IsNew())
+            {
+                UserRepository.Create(model);
+            }
+            else
+            {
+                UserRepository.Update(model);
+            }
+
+            return Success("Registro salvo com sucesso!");
         }
     }
 }

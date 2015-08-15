@@ -21,7 +21,49 @@ namespace Template.Repository
         /// </param>
         public new void Create(User entity)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                entity.Salt = Guid.NewGuid().ToString("N");
+                entity.Password = User.EncriptPassword(entity.Salt, entity.Password);
+
+                Session.Save(entity);
+
+                transaction.Commit();
+            }
+        }
+
+        /// <summary>
+        ///     Atualiza usuário
+        /// </summary>
+        /// <param name="entity">
+        ///     <see cref="User" />
+        /// </param>
+        /// <returns>
+        ///     <see cref="User" />
+        /// </returns>
+        public new User Update(User entity)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var user = Session.Get<User>(entity.Id);
+
+                user.Name = entity.Name;
+                user.Active = entity.Active;
+                user.Email = entity.Email;
+                user.Login = entity.Login;
+                user.Profile = entity.Profile;
+
+                if (!string.IsNullOrWhiteSpace(entity.Password))
+                {
+                    user.Password = User.EncriptPassword(user.Salt, entity.Password);    
+                }
+
+                Session.Update(user);
+
+                transaction.Commit();
+
+                return user;
+            }
         }
 
         /// <summary>
@@ -75,7 +117,15 @@ namespace Template.Repository
         /// <returns>Login existe ou não</returns>
         public bool ExistLogin(int id, string login)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var count = Session.Query<User>().Count(x=> x.Id != id && 
+                        x.Login.ToLower() == login.ToLower().Trim()) > 0;
+
+                transaction.Commit();
+
+                return count;
+            }
         }
 
         /// <summary>
@@ -86,7 +136,15 @@ namespace Template.Repository
         /// <returns>E-mail existe ou não</returns>
         public bool ExistEmail(int id, string email)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var count = Session.Query<User>().Count(x => x.Id != id &&
+                        x.Email.ToLower() == email.ToLower().Trim()) > 0;
+
+                transaction.Commit();
+
+                return count;
+            }
         }
 
         /// <summary>
@@ -123,7 +181,15 @@ namespace Template.Repository
         /// </returns>
         public User Find(string email)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var user = Session.Query<User>().SingleOrDefault(x => 
+                    x.Email.ToLower() == email.ToLower().Trim()) ;
+
+                transaction.Commit();
+
+                return user;
+            }
         }
 
         /// <summary>
