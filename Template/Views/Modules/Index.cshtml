@@ -6,7 +6,13 @@
     {
         <li class="dd-item dd3-item" data-id="@module.Id">
             <div class="dd-handle dd3-handle">Drag</div>
-            <div class="dd3-content"><i class="fa @module.CssClass"></i> @module.Name</div>
+            <div class="dd3-content">
+                <i class="fa @module.CssClass"></i> @module.Name
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { module.Id })" class="btn btn-xs btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Delete", new { module.Id })" class="btn btn-xs btn-danger btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                </div>
+            </div>
             @if (module.Childs.Any())
             {
                 <ol class="dd-list">

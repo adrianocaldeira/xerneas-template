@@ -63,6 +63,39 @@
                     });
                 }
             });;
+
+            $nestable.on("click", ".btn-delete-row", function (e) {
+                var $button = $(this);
+
+                e.preventDefault();
+
+                $.thunder.confirm("Deseja realmente excluir esse registro?", {
+                    onYes: function () {
+                        $.ajax({
+                            url: $button.is("a") ? $button.attr("href") : $button.data("url"),
+                            type: "delete",
+                            headers: {
+                                "Url-Parent": window.location.pathname
+                            },
+                            success: function (result) {
+                                if (result.type === 0) {
+                                    //if (options.loadOnDelete) {
+                                    //    $.thunder.grid($grid, "reload");
+                                    //}
+
+                                    //if ($.isFunction(options.successOnDelete)) {
+                                    //    options.successOnDelete.call($button, $grid);
+                                    //}
+                                } else {
+                                    $.thunder.alert(result.data || result.messages, {
+                                        type: app.settings.getMessageType(result.type)
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
         });
 
         $("[data-control=\"grid\"]").each(function () {

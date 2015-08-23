@@ -33,7 +33,7 @@ namespace Template.Repository
 
                 foreach (var module in parents)
                 {
-                    modules.AddRange(Find(userDb, module));
+                    Find(module, modules, userDb);
                 }
 
                 transaction.Commit();
@@ -100,33 +100,30 @@ namespace Template.Repository
             }
         }
 
-        private static IEnumerable<Module> Find(User user, Module parent)
+        private static void Find(Module module, IList<Module> modules, User user)
         {
-            var modules = new List<Module>();
+            if (module == null) return;
+            if (!user.Profile.HasAccess(module)) return;
 
-            if (user.Profile.HasAccess(parent))
+            var clone = new Module
             {
-                var module = new Module
-                {
-                    Id = parent.Id,
-                    Name = parent.Name,
-                    Order = parent.Order,
-                    Description = parent.Description,
-                    CssClass = parent.CssClass,
-                    Created = parent.Created,
-                    Updated = parent.Updated,
-                    Functionalities = parent.Functionalities
-                };
+                Id = module.Id,
+                Name = module.Name,
+                Order = module.Order,
+                Description = module.Description,
+                CssClass = module.CssClass,
+                Created = module.Created,
+                Updated = module.Updated,
+                Functionalities = module.Functionalities,
+                Childs = new List<Module>()
+            };
 
-                foreach (var item in parent.Childs.SelectMany(child => Find(user, child)))
-                {
-                    module.Childs.Add(item);
-                }
-
-                modules.Add(module);
+            foreach (var child in module.Childs)
+            {
+                Find(child, clone.Childs, user);
             }
 
-            return modules;
+            modules.Add(clone);
         }
     }
 }

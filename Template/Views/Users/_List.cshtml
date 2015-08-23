@@ -27,8 +27,8 @@
                             <td class="align-middle">@item.Email</td>
                             <td class="align-middle align-center">@(item.Active ? "Ativo" : "Inativo")</td>
                             <td class="align-middle align-center">
-                                <a href="@Url.Action("Edit", new { item.Id })" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
-                                <a href="@Url.Action("Delete", new { item.Id })" class="btn btn-sm btn-danger btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                <a href="@Url.Action("Edit", new { item.Id })" class="btn btn-xs btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+                                <a href="@Url.Action("Delete", new { item.Id })" class="btn btn-xs btn-danger btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     }
