@@ -57,8 +57,12 @@
                         data: {
                             json: json
                         },
-                        success: function () {
+                        success: function (result) {
                             $nestable.data("json", json);
+
+                            if (window[$nestable.data("change")]) {
+                                window[$nestable.data("change")].call($nestable, result);
+                            }
                         }
                     });
                 }
