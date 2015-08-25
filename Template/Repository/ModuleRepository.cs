@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Template.Models;
 using NHibernate.Linq;
-using NHibernate.Util;
+using Template.Models;
+using Thunder.Data.Pattern;
 
 namespace Template.Repository
 {
-    public class ModuleRepository : Thunder.Data.Pattern.Repository<Module, int>, IModuleRepository
+    public class ModuleRepository : Repository<Module, int>, IModuleRepository
     {
         public IList<Module> Parents()
         {
