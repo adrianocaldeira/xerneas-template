@@ -2,8 +2,6 @@
 
 app.modules = [
     "login",
-    "userProfiles",
-    "users",
     "modules"
 ];
 

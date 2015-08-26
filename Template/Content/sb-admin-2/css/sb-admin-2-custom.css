@@ -51,3 +51,12 @@
 .thunder-grid-content .alert {
     margin-bottom: 0;
 }
+
+.form-control.disabled {
+    background-color: #eee;
+    opacity: 1;
+}
+
+.clear-margin-bottom {
+    margin-bottom: 0;
+}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Thunder.Data.Pattern;
 
@@ -21,8 +22,19 @@ namespace Template.Models
         }
 
         /// <summary>
+        ///     Recupera ou define código
+        /// </summary>
+        [Display(Name = "Módulo \"Pai\"")]
+        public new virtual int Id
+        {
+            get { return base.Id; }
+            set { base.Id = value; }
+        }
+
+        /// <summary>
         ///     Recupera ou define nome do módulo
         /// </summary>
+        [Display(Name = "Nome")]
         public virtual string Name { get; set; }
 
         /// <summary>
@@ -33,6 +45,7 @@ namespace Template.Models
         /// <summary>
         ///     Recupera ou define descrição do módulo
         /// </summary>
+        [Display(Name = "Descrição")]
         public virtual string Description { get; set; }
 
         /// <summary>
@@ -112,7 +125,8 @@ namespace Template.Models
         public virtual bool Contains(string controllerName, string actionName)
         {
             return AllFunctionalities().Any(functionality =>
-                functionality.Controller.ToLower().Equals(controllerName.ToLower()) && functionality.Action.ToLower().Equals(actionName.ToLower()));
+                functionality.Controller.ToLower().Equals(controllerName.ToLower()) &&
+                functionality.Action.ToLower().Equals(actionName.ToLower()));
         }
     }
 }

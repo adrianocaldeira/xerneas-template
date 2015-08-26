@@ -203,11 +203,14 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Icon.png" />
     <EmbeddedResource Include="Models\Orm\Functionality.hbm.xml" />
-    <EmbeddedResource Include="Models\Orm\Module.hbm.xml" />
+    <EmbeddedResource Include="Models\Orm\Module.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\Orm\User.hbm.xml" />
     <EmbeddedResource Include="Models\Orm\UserProfile.hbm.xml" />
     <Content Include="Scripts\Application\App.js" />
     <Content Include="Scripts\Application\Initialize.js" />
+    <Content Include="Scripts\Application\Modules.js" />
     <Content Include="Scripts\Application\Login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -216,6 +219,8 @@
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\handlebars-v2.0.0.js" />
+    <Content Include="Scripts\handlebars.runtime-v2.0.0.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
@@ -274,6 +279,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\_List.cshtml" />
     <Content Include="Views\Users\Form.cshtml" />
+    <Content Include="Views\Modules\Form.cshtml" />
     <None Include="Views\Modules\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

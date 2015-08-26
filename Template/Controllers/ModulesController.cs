@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using System.Globalization;
 using System.Web.Mvc;
 using Template.Filters;
+using Template.Models;
 using Template.Models.Extensions;
 using Template.Models.Views.Modules;
 using Template.Repository;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
-
+using Thunder.Extensions;
 namespace Template.Controllers
 {
     [Authorization(IgnoreActions = "Organazer")]
@@ -35,6 +34,28 @@ namespace Template.Controllers
             ModuleRepository.Organizer(modules);
 
             return Success();
+        }
+
+        [HttpGet]
+        public ActionResult New(Module parent = null)
+        {
+            return View("Form", new Module
+            {
+                Parent = parent != null ? ModuleRepository.Find(parent.Id) : null
+            });
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var module = ModuleRepository.Find(id);
+
+            if (module == null)
+            {
+                return new HttpNotFoundResult("Módulo {0} não foi encontrado.".With(id));
+            }
+
+            return View("Form", module);
         }
     }
 }

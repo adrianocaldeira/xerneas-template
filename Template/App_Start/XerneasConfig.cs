@@ -1,4 +1,5 @@
 ﻿using System.Web.Optimization;
+using System.Web.Routing;
 using log4net.Config;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Template.XerneasConfig), "Start")]
@@ -10,12 +11,15 @@ namespace Template
         {
             XmlConfigurator.Configure();
 
-            BundleTable.EnableOptimizations = true;
+            RouteTable.Routes.LowercaseUrls = true;
+
+            BundleTable.EnableOptimizations = false;
 
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")
                 .Include("~/scripts/jquery-2.1.4.min.js"
                     , "~/scripts/jquery-ui-1.11.4.js"
                     , "~/scripts/bootstrap.min.js"
+                    , "~/scripts/handlebars-v2.0.0.js"
                     , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
                     , "~/content/sb-admin-2/js/sb-admin-2.js"
                     , "~/scripts/jquery.nestable.js"
@@ -23,6 +27,7 @@ namespace Template
                     , "~/scripts/application/app.js"
                     , "~/scripts/application/initialize.js"
                     , "~/scripts/application/login.js"
+                    , "~/scripts/application/modules.js"
                     ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/bundle")
