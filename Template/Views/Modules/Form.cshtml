@@ -18,7 +18,7 @@
     <script type="text/javascript">
         window.moduleParameters = {
             functionalities: @Html.Raw(functionalities.Json(Formatting.None))
-        };
+            };
     </script>
 }
 <div class="row">
@@ -61,43 +61,43 @@
                         <div class="col-lg-7">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.Name)
-                                @Html.Thunder().TextBoxFor(x => x.Name, new {@class = "form-control"})
+                                @Html.Thunder().TextBoxFor(x => x.Name, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.CssClass)
-                                @Html.Thunder().TextBoxFor(x => x.CssClass, new {@class = "form-control"})
+                                @Html.Thunder().TextBoxFor(x => x.CssClass, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="col-lg-8">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.Description)
-                                @Html.Thunder().TextBoxFor(x => x.Description, new {@class = "form-control"})
+                                @Html.Thunder().TextBoxFor(x => x.Description, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" id="panel-functionalities">
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <i class="fa fa-table"></i> Funcionalidades
                                 <div class="pull-right">
-                                    <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-plus-circle"></i></a>
+                                    <a class="btn btn-primary btn-xs" href="@Url.Action("Form", "Functionalities")" id="add-functionality" data-index="-1"><i class="fa fa-plus-circle"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
                             <table id="panel-functionalities-data" class="table table-striped table-bordered table-hover clear-margin-bottom" style="display: none">
                                 <thead>
-                                <tr>
-                                    <th class="align-middle">Nome</th>
-                                    <th class="align-middle">Descrição</th>
-                                    <th class="align-middle">Controller</th>
-                                    <th class="align-middle">Action</th>
-                                    <th class="align-middle align-center">Método Http</th>
-                                    <th class="align-middle align-center">Principal</th>
-                                    <th class="align-middle align-center" style="width: 90px;">Operação</th>
-                                </tr>
+                                    <tr>
+                                        <th class="align-middle">Nome</th>
+                                        <th class="align-middle">Descrição</th>
+                                        <th class="align-middle">Controller</th>
+                                        <th class="align-middle">Action</th>
+                                        <th class="align-middle align-center">Método Http</th>
+                                        <th class="align-middle align-center">Principal</th>
+                                        <th class="align-middle align-center" style="width: 90px;">Operação</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
@@ -113,7 +113,7 @@
                                         {{#if default}}Sim{{else}}Não{{/if}}
                                     </td>
                                     <td class="align-middle align-center">
-                                        <a href="#" data-index="{{@Html.Raw("@index")}}" data-url="@Url.Action("Form", "TicketParticipants")" class="btn btn-xs btn-primary edit-functionality"><i class="fa fa-pencil"></i></a>
+                                        <a href="@Url.Action("Form", "Functionalities")" data-index="{{@Html.Raw("@index")}}" class="btn btn-xs btn-primary edit-functionality"><i class="fa fa-pencil"></i></a>
                                         <a href="#" data-index="{{@Html.Raw("@index")}}" class="btn btn-xs btn-danger delete-functionality"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>

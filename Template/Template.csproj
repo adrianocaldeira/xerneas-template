@@ -234,6 +234,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\XerneasConfig.cs" />
+    <Compile Include="Controllers\FunctionalitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\Views\Functionalities\Form.cs" />
     <Compile Include="Models\Views\Login\Index.cs" />
     <Compile Include="Models\Views\Modules\TreeView.cs" />
     <Compile Include="Models\Views\Users\Form.cs" />
@@ -270,6 +272,7 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Functionalities\Form.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Layouts\Header.cshtml" />
     <None Include="Views\Layouts\Menu.cshtml" />
@@ -281,6 +284,7 @@
     <Content Include="Views\Users\Form.cshtml" />
     <Content Include="Views\Modules\Form.cshtml" />
     <None Include="Views\Modules\Index.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

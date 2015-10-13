@@ -18,16 +18,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            @Html.Action("Header", "Layouts")
-            @Html.Action("Menu", "Layouts")
-        </nav>
-        <div id="page-wrapper">
-            @RenderBody()
-        </div>
-    </div>
+<body data-root="~/" data-window="modal">
+    @RenderBody()
     @Scripts.Render("~/scripts/bundle")
     @RenderSection("Scripts", false)
 </body>

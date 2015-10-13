@@ -1,0 +1,52 @@
+﻿@model Template.Models.Views.Functionalities.Form
+@{
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+<div class="modal-header modal-thunder-header">
+    <button type="button" class="close">&times;</button>
+    Funcionalidade
+</div>
+<form role="form">
+    <div class="modal-body modal-thunder-body container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Functionality.Name)
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Name, new {@class="form-control"})
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Functionality.Description)
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Description, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Functionality.Controller)
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Controller, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Functionality.Action)
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Action, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Functionality.HttpMethod)
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.HttpMethod, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="checkbox">
+                    <label style="font-weight: 700">@Html.CheckBoxFor(m => m.Functionality.Default) Principal</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer modal-thunder-footer  action-btn">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+</form>

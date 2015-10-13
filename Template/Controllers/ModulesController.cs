@@ -9,8 +9,8 @@ using Controller = Thunder.Web.Mvc.Controller;
 using Thunder.Extensions;
 namespace Template.Controllers
 {
-    [Authorization(IgnoreActions = "Organazer")]
     [SessionPerRequest]
+    [Authorization(IgnoreActions = "Organazer")]
     public class ModulesController : Controller
     {
         public ModulesController()

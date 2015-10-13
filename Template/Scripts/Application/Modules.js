@@ -7,14 +7,14 @@ app.modules.functionalities = {
     data: [],
     init: function () {
         $("#panel-functionalities").on("click", "a.edit-functionality, #add-functionality", function (e) {
-            var $this = $(this);
-            var url = $this.data("url") + "?Index=" + $this.data("index");
-
             e.preventDefault();
 
+            var $this = $(this);
+            var url = $this.attr("href") + "?Index=" + $this.data("index");
+            
             $.thunder.modal(url, {
                 width: 800,
-                height: 550
+                height: 400
             });
         });
 

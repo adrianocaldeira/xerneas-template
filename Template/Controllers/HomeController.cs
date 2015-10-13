@@ -82,6 +82,24 @@ namespace Template.Controllers
                         HttpMethod = "POST",
                         Name = "Salvar"
                     });
+                    modulo.Functionalities.Add(new Functionality
+                    {
+                        Action = "Form",
+                        Controller = "Functionalities",
+                        Description = "Cria/Edita funcionalidade de um módulo",
+                        Module = modulo,
+                        HttpMethod = "GET",
+                        Name = "Criar/Editar Funcionalidade"
+                    });
+                    modulo.Functionalities.Add(new Functionality
+                    {
+                        Action = "Save",
+                        Controller = "Functionalities",
+                        Description = "Salva funcionalidade de um módulo",
+                        Module = modulo,
+                        HttpMethod = "POST",
+                        Name = "Salvar Funcionalidade"
+                    });
                     session.Save(modulo);
 
                     var seguranca = new Module();
