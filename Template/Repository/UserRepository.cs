@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
+using NHibernate;
+using NHibernate.Criterion;
 using NHibernate.Linq;
 using Template.Models;
 using Template.Models.Filters;
 using Thunder.Collections;
 using Thunder.Collections.Extensions;
 using Thunder.Data;
+using Thunder.Data.Extensions;
 using Thunder.Data.Pattern;
 using Thunder.Security;
 
