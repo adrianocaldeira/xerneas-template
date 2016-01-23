@@ -11,7 +11,7 @@ if (typeof jQuery.ui === "undefined") {
         $.thunder = {};
     };
 
-    $.thunder.version = "1.0.9";
+    $.thunder.version = "1.1.2";
 
     $.thunder.statusCode = {
         400: "Bad request",
@@ -230,7 +230,9 @@ if (typeof jQuery.ui === "undefined") {
             $ok.focus();
         });
 
-        $this.modal("show");
+        $this.modal({
+            keyboard: false
+        });
     };
 
     $.thunder.alert.defaultOptions = {
@@ -299,7 +301,9 @@ if (typeof jQuery.ui === "undefined") {
             .addClass(defaults.effect)
             .append($dialog);
 
-        $this.modal("show");
+        $this.modal({
+            keyboard: false
+        });
     };
 
     $.thunder.confirm.defaultOptions = {
@@ -557,7 +561,9 @@ if (typeof jQuery.ui === "undefined") {
             async: true,
             autoResolveResult: true,
             before: function () { },
+            beforeSend: function () { },
             success: function () { },
+            result: function () { },
             complete: function () { },
             validate: function () { return true; }
         }, $.thunder.ajaxForm.defaultOptions, options);
@@ -639,8 +645,7 @@ if (typeof jQuery.ui === "undefined") {
 
                 return fields;
             };
-            var serialize = function (form, extraData) {
-                var $form = $(form);
+            var serialize = function (extraData) {
                 var fields = getFields();
                 var parameters = fields.serializeArray();
 
@@ -672,7 +677,7 @@ if (typeof jQuery.ui === "undefined") {
                     extraData = defaults.before.call($form);
                 }
 
-                var dataSerialize = serialize($form, extraData);
+                var dataSerialize = serialize(extraData);
 
                 if ($.isFunction(defaults.validate) && !defaults.validate.call($form, dataSerialize)) {
                     return;
@@ -699,6 +704,11 @@ if (typeof jQuery.ui === "undefined") {
                         $loading.show();
                         $.thunder.disableElement($("input,select,textarea,button", $form));
                         $fields.removeClass(defaults.className + "-error");
+                        $fields.closest(".form-group").removeClass("has-error");
+
+                        if ($.isFunction(defaults.beforeSend)) {
+                            defaults.beforeSend.call($form, $fields);
+                        }
                     },
                     complete: function () {
                         $.thunder.enableElement($("input,select,textarea,button", $form));
@@ -716,18 +726,18 @@ if (typeof jQuery.ui === "undefined") {
                                             defaults.success.call($form, result);
                                         }
                                     } else {
-                                        var $firstField = null;
                                         $.each(result.messages, function () {
                                             if (this.key !== undefined) {
                                                 var $field = $("[name='" + this.key + "'],#" + this.key, $form);
 
-                                                if ($firstField === null) {
-                                                    $firstField = $field;
+                                                if ($field.closest(".form-group").size() > 0) {
+                                                    $field.closest(".form-group").addClass("has-error");
+                                                } else {
+                                                    $field.addClass(defaults.className + "-error");
                                                 }
-
-                                                $field.addClass(defaults.className + "-error");
                                             }
                                         });
+              
                                         messages(result.messages, { type: result.type });
                                     }
                                 } else {
@@ -735,6 +745,10 @@ if (typeof jQuery.ui === "undefined") {
                                 }
                             } else {
                                 defaults.success.call($form, result);
+                            }
+
+                            if ($.isFunction(defaults.result)) {
+                                defaults.result.call($form, result);
                             }
                         }, 0);
                     }
@@ -807,7 +821,7 @@ if (typeof jQuery.ui === "undefined") {
             complete: function () { },
             validate: function () { return true; }
         }, $.thunder.grid.defaultOptions, options);
-
+        
         var messages = function (m, o) {
             var settings = $.extend({
                 type: 3
@@ -850,7 +864,7 @@ if (typeof jQuery.ui === "undefined") {
             if (defaults.ignore !== "undefined" && defaults.ignore !== "") {
                 fields = $("input,select,textarea", $form).filter(defaults.ignore);
             }
-
+            
             var parameters = fields.serializeArray();
 
             if ($.isArray(extraData)) {
@@ -974,7 +988,7 @@ if (typeof jQuery.ui === "undefined") {
             var $loading = $(defaults.loading);
             var $form = $(defaults.form);
             var $content = $("<div></div>");
-
+            
             $grid.addClass(defaults.className).css(defaults.css);
 
             if ($("." + defaults.className + "-content", $grid).length === 0) {
@@ -993,7 +1007,7 @@ if (typeof jQuery.ui === "undefined") {
             }
 
             if ($form.length === 0 && $("." + defaults.className + "-form", $grid).length === 0) {
-                $grid.prepend($("<form></form>").addClass(defaults.className + "-form"));
+                $grid.prepend($(defaults.useForm ? "<form></form>" : "<div></div>").addClass(defaults.className + "-form"));
                 $form = $("." + defaults.className + "-form", $grid);
             }
 
@@ -1028,20 +1042,35 @@ if (typeof jQuery.ui === "undefined") {
 
             $form.attr("action", $grid.data("url"))
                 .attr("method", defaults.httpMethod)
-                .on("submit", function(event) {
+                .on((defaults.useForm ? "submit" : "send"), function (event) {
                     event.preventDefault();
                     setCurrentPage.call(this, 0);
                     load.call($grid);
                 });
 
-            $grid.bind("reload", function() {
-                $form.submit();
-            });
+            console.log($form);
 
             $grid.data("loading", $loading)
                 .data("message", $message)
                 .data("content", $content)
                 .data("form", $form);
+
+            $grid.bind("reload", function () {
+                $form.trigger((defaults.useForm ? "submit" : "send"));
+            });
+
+            if (!defaults.useForm) {
+                $("input:text", $form).on("keypress", function(e) {
+                    if (e.which === 13) {
+                        $form.trigger("send");
+                    }
+                });
+
+                $(defaults.buttonSubmit, $form).on("click", function (e) {
+                    e.preventDefault();
+                    $form.trigger("send");
+                });
+            }
 
             $grid.on("click", "ul.pagination a", function(event) {
                 var $link = $(this);
@@ -1067,6 +1096,8 @@ if (typeof jQuery.ui === "undefined") {
         ignore: "",
         loading: null,
         httpMethod: "POST",
+        useForm: true,
+        buttonSubmit: null,
         statusCode: {
             message: {
                 plugin: "message", //message, alert

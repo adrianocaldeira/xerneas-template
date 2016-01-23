@@ -2,9 +2,9 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Usuários
+            <i class="fa fa-user"></i> Usuários
             <span class="pull-right">
-                <a class="btn btn-primary" href="@Url.Action("New")" title="Novo"><i class="fa fa-plus"></i></a>
+                <a href="@Url.Action("New")" title="Novo"><i class="fa fa-plus"></i></a>
             </span>
         </h1>
     </div>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                @using (Html.Thunder().Grid(Url.Action("List"), 1, new { data_control = "grid"}))
+                @using (Html.Thunder().Grid(Url.Action("List"), UserFilter.DefaultPageSize, new { data_control = "grid"}))
                 {
                 }
             </div>

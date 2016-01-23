@@ -13,7 +13,8 @@
                         <th class="align-middle">Login</th>
                         <th class="align-middle">E-mail</th>
                         <th class="align-middle align-center" style="width: 80px;">Status</th>
-                        <th class="align-middle align-center" style="width: 90px;">Operação</th>
+                        <th class="align-middle align-center col-edit">Editar</th>
+                        <th class="align-middle align-center col-edit">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,8 +28,10 @@
                             <td class="align-middle">@item.Email</td>
                             <td class="align-middle align-center">@(item.Active ? "Ativo" : "Inativo")</td>
                             <td class="align-middle align-center">
-                                <a href="@Url.Action("Edit", new { item.Id })" class="btn btn-xs btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
-                                <a href="@Url.Action("Delete", new { item.Id })" class="btn btn-xs btn-danger btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                <a href="@Url.Action("Edit", new {item.Id})" title="Editar"><i class="fa fa-pencil"></i></a>
+                            </td>
+                            <td class="align-middle align-center">
+                                <a href="@Url.Action("Delete", new { item.Id })" class="btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     }

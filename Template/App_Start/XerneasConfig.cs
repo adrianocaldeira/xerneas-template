@@ -1,6 +1,12 @@
-﻿using System.Web.Optimization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
+using System.Web.Optimization;
 using System.Web.Routing;
 using log4net.Config;
+using Thunder.Web.Mvc.Binders;
+using RequiredAttributeAdapter = Template.Adapters.RequiredAttributeAdapter;
+using StringLengthAttributeAdapter = Template.Adapters.StringLengthAttributeAdapter;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Template.XerneasConfig), "Start")]
 namespace Template
@@ -11,28 +17,40 @@ namespace Template
         {
             XmlConfigurator.Configure();
 
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+
+            DataAnnotationsModelValidatorProvider.RegisterAdapterFactory(typeof(RequiredAttribute),
+                (metadata, controllerContext, attribute) => new RequiredAttributeAdapter(metadata, controllerContext, (RequiredAttribute)attribute));
+
+            DataAnnotationsModelValidatorProvider.RegisterAdapterFactory(typeof(StringLengthAttribute),
+                (metadata, controllerContext, attribute) => new StringLengthAttributeAdapter(metadata, controllerContext, (StringLengthAttribute)attribute));
+
+            DefaultModelBinder.ResourceClassKey = "Resources";
+            ValidationExtensions.ResourceClassKey = "Resources";
+
             RouteTable.Routes.LowercaseUrls = true;
 
             BundleTable.EnableOptimizations = false;
 
+            #region Bundle 
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")
-                .Include("~/scripts/jquery-2.1.4.min.js"
-                    , "~/scripts/jquery-ui-1.11.4.js"
-                    , "~/scripts/bootstrap.min.js"
-                    , "~/scripts/handlebars-v2.0.0.js"
-                    , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
-                    , "~/content/sb-admin-2/js/sb-admin-2.js"
-                    , "~/scripts/jquery.nestable.js"
-                    , "~/scripts/thunderjs-1.0.9.js"
-                    , "~/scripts/application/app.js"
-                    , "~/scripts/application/initialize.js"
-                    , "~/scripts/application/login.js"
-                    , "~/scripts/application/modules.js"
-                    ));
+                            .Include("~/scripts/jquery-{version}.js"
+                                , "~/scripts/jquery-ui-{version}.js"
+                                , "~/scripts/bootstrap.min.js"
+                                , "~/scripts/handlebars-v2.0.0.js"
+                                , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
+                                , "~/content/sb-admin-2/js/sb-admin-2.js"
+                                , "~/scripts/jquery.nestable.js"
+                                , "~/scripts/thunderjs-{version}.js"
+                                , "~/scripts/application/app.js"
+                                , "~/scripts/application/initialize.js"
+                                , "~/scripts/application/login.js"
+                                , "~/scripts/application/modules.js"
+                                ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/bundle")
                 .Include("~/content/bootstrap.min.css"
-                , "~/content/thunderjs-1.0.9.css"
+                , "~/content/thunderjs-{version}.css"
                 , "~/content/jquery.nestable.css"
                 ));
 
@@ -46,6 +64,7 @@ namespace Template
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/sb-admin-2/dist/font-awesome/css/bundle")
                 .Include("~/content/sb-admin-2/dist/font-awesome/css/font-awesome.min.css"));
+            #endregion
         }
     }
 }

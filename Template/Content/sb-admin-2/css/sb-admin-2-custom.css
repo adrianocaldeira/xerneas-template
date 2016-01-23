@@ -52,6 +52,10 @@
     margin-bottom: 0;
 }
 
+.col-edit, .col-delete {
+    width: 60px;
+}
+
 .form-control.disabled {
     background-color: #eee;
     opacity: 1;
@@ -59,4 +63,40 @@
 
 .clear-margin-bottom {
     margin-bottom: 0;
+}
+
+#page-wrapper, #page-wrapper .panel-title, #page-wrapper a {
+    color: #777;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    color: #fff !important;
+}
+
+.page-header {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.page-header a i.fa, table td i.fa {
+    font-size: 22px;
+}
+
+#page-wrapper a:hover {
+    color: #337ab7;
+}
+
+.thunder-confirm .modal-header {
+    background: #337ab7;
+    color: #fff;
+}
+
+.has-error .form-control {
+    background: #f4b2b2 !important;
+    background: rgba(244, 178, 178, 0.51) !important;
+    border: solid 1px #f4b2b2 !important;
+}
+
+.has-error .input-icon > i {
+    color: #f3a8a8 !important;
 }

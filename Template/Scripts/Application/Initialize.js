@@ -19,25 +19,57 @@
             var module = $this.data("module");
             var action = $this.data("action");
             var parameters = window[$this.data("parameters") || {}];
-            
-            if (app[module] && app[module][action]) app[module][action].call($this, parameters);
+
+            if (app[module] && app[module][action]) app[module][action].call($this, parameters || $this.data("parameters"));
         });
 
         $("[data-control=\"form\"]").each(function() {
             var $form = $(this);
-            var $message = $form.data("message-selector") === undefined ? null : $form.data("message-selector");
+            var options = {
+                message: $form.data("message-selector") === undefined ? undefined : $form.data("message-selector"),
+                showMessageOnSuccess: $form.data("show-message-on-success") === undefined ? false : $form.data("show-message-on-success"),
+                redirectOnSuccess: $form.data("redirect-on-success") === undefined ? false : $form.data("redirect-on-success"),
+                before: $form.data("before") === undefined ? undefined : $form.data("before"),
+                success: $form.data("success") === undefined ? undefined : $form.data("success"),
+                warning: $form.data("warning") === undefined ? undefined : $form.data("warning"),
+                messageType: $form.data("message-type") === undefined ? "alert" : $form.data("message-type")
+            };
+
+            if (options.success !== undefined) {
+                options.success = window[options.success];
+            }
+
+            if (options.before !== undefined) {
+                options.before = window[options.before];
+            }
 
             $.thunder.ajaxForm($form, {
                 message: {
-                    selector: $message
+                    selector: options.message,
+                    plugin: options.messageType
                 },
+                before: options.before,
                 success: function (result) {
-                    $.thunder.alert(result.data, {
-                        type: "success",
-                        onOk: function () {
-                            window.location.href = $form.data("redirect-on-success");
+                    if (options.success !== undefined) {
+                        options.success.call($form, result);
+                    }
+
+                    if (options.redirectOnSuccess) {
+                        if (options.showMessageOnSuccess) {
+                            $.thunder.alert(result.data.message, {
+                                type: "success",
+                                onOk: function () {
+                                    window.location.href = result.data.url;
+                                }
+                            });
+                        } else {
+                            window.location.href = result.data.url;
                         }
-                    });
+                    } else {
+                        if (options.showMessageOnSuccess) {
+                            $.thunder.alert(result.data.message, { type: "success" });
+                        }
+                    }
                 }
             });
         });
@@ -181,13 +213,13 @@
             }
         });
 
-        $.thunder.alert.defaultOptions.title = "Aviso";
+        $.thunder.alert.defaultOptions.title = "Aviso Importante";
 
         $.thunder.confirm.defaultOptions.title = "Confirmação";
         $.thunder.confirm.defaultOptions.button.yes.label = "Sim";
-        $.thunder.confirm.defaultOptions.button.yes.className = "btn btn-sm green";
+        $.thunder.confirm.defaultOptions.button.yes.className = "btn btn-sm btn-success";
         $.thunder.confirm.defaultOptions.button.no.label = "Não";
-        $.thunder.confirm.defaultOptions.button.no.className = "btn btn-sm red";
+        $.thunder.confirm.defaultOptions.button.no.className = "btn btn-sm btn-danger";
     }
 };
 
