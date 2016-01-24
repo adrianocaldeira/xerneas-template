@@ -21,7 +21,8 @@
                 @using (Html.BeginForm("Save", "Users", FormMethod.Post, new
                 {
                     data_control = "form",
-                    data_redirect_on_success = Url.Action("Index")
+                    data_redirect_on_success = "true",
+                    data_show_message_on_success = "true"
                 }))
                 {
                     @Html.AntiForgeryToken()
@@ -65,8 +66,8 @@
                         </div>           
                     </div>
                     <div class="row">
-                        <div class="col-lg-2">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        <div class="col-md-12">
+                            <button type="submit" class="pull-right btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
                         </div>
                     </div>
                 }

@@ -213,6 +213,11 @@
             }
         });
 
+        $("input").iCheck({
+            checkboxClass: "icheckbox_square-blue",
+            radioClass: "iradio_square-blue"
+        });
+
         $.thunder.alert.defaultOptions.title = "Aviso Importante";
 
         $.thunder.confirm.defaultOptions.title = "Confirmação";

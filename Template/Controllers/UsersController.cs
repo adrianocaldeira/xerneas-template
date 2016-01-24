@@ -6,6 +6,7 @@ using Template.Filters;
 using Template.Models;
 using Template.Models.Filters;
 using Template.Models.Views.Users;
+using Template.Properties;
 using Template.Repository;
 using Thunder;
 using Thunder.Extensions;
@@ -40,7 +41,7 @@ namespace Template.Controllers
             return View("Index", new Index
             {
                 Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
-                            new SelectListItem { Selected = true, Text = "Todos", Value = "0" })
+                            new SelectListItem { Selected = true, Text = Resources.All, Value = "0" })
             });
         }
 
@@ -75,7 +76,7 @@ namespace Template.Controllers
             {
                 User = new User{Active = true},
                 Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
-                    new SelectListItem { Selected = true, Text = "Selecione", Value = "" })
+                    new SelectListItem { Selected = true, Text = Resources.Select, Value = "" })
             });
         }
 
@@ -93,7 +94,7 @@ namespace Template.Controllers
             {
                 User = user,
                 Profiles = UserProfileRepository.All(x => x.Active).ToSelectList(x => x.Name, x => x.Id.ToString(CultureInfo.InvariantCulture),
-                    new SelectListItem { Selected = true, Text = "Selecione", Value = "" })
+                    new SelectListItem { Selected = true, Text = Resources.Select, Value = "" })
             });
         }
 
@@ -118,7 +119,7 @@ namespace Template.Controllers
                 UserRepository.Update(model);
             }
 
-            return Success("Registro salvo com sucesso!");
+            return Success(new { message = Resources.SaveWithSuccess, Url = Url.Action("Index") });
         }
     }
 }

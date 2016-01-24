@@ -30,17 +30,17 @@ namespace Template
 
             RouteTable.Routes.LowercaseUrls = true;
 
+            #region Bundle 
             BundleTable.EnableOptimizations = false;
 
-            #region Bundle 
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")
                             .Include("~/scripts/jquery-{version}.js"
                                 , "~/scripts/jquery-ui-{version}.js"
                                 , "~/scripts/bootstrap.min.js"
-                                , "~/scripts/handlebars-v2.0.0.js"
                                 , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
                                 , "~/content/sb-admin-2/js/sb-admin-2.js"
                                 , "~/scripts/jquery.nestable.js"
+                                , "~/scripts/icheck.js"
                                 , "~/scripts/thunderjs-{version}.js"
                                 , "~/scripts/application/app.js"
                                 , "~/scripts/application/initialize.js"
@@ -64,6 +64,9 @@ namespace Template
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/sb-admin-2/dist/font-awesome/css/bundle")
                 .Include("~/content/sb-admin-2/dist/font-awesome/css/font-awesome.min.css"));
+            
+            BundleTable.Bundles.Add(new StyleBundle("~/content/icheck/skins/bundle")
+                .Include("~/content/icheck/skins/all.css"));
             #endregion
         }
     }
