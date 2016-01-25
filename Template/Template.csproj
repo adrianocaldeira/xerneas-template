@@ -317,6 +317,7 @@
     <EmbeddedResource Include="Models\Orm\UserProfile.hbm.xml" />
     <Content Include="Scripts\Application\App.js" />
     <Content Include="Scripts\Application\Initialize.js" />
+    <Content Include="Scripts\Application\UserProfiles.js" />
     <Content Include="Scripts\Application\Modules.js" />
     <Content Include="Scripts\Application\Login.js" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.eot" />

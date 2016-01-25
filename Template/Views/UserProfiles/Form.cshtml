@@ -4,7 +4,7 @@
 {
     if (modules.Count > 0)
     {
-        <ul class="no-bullet">
+        <ul class="treeview">
             @foreach (var module in modules)
             {
                 <li class="@(module.Childs.Any() ? "parent" : "")">
@@ -53,11 +53,11 @@
                                         <label>
                                             @if (profile.HasAccess(functionality))
                                             {
-                                                <input type="checkbox" value="@functionality.Id" checked="checked" />
+                                                <input type="checkbox" class="make-icheck" value="@functionality.Id" checked="checked" />
                                             }
                                             else
                                             {
-                                                <input type="checkbox" value="@functionality.Id" />
+                                                <input type="checkbox" class="make-icheck" value="@functionality.Id" />
                                             }
                                             @functionality.Name
                                         </label>
@@ -72,7 +72,7 @@
         }
     }
 }
-<div class="row">
+<div class="row" data-module="userProfiles" data-action="form">
     <div class="col-lg-12">
         <h1 class="page-header">
             <i class="fa fa-group"></i> Perfis de Usuário
@@ -122,7 +122,7 @@
                         </div>
                         <div class="tab-pane" id="tab_1">
                             <div class="row">
-                                <div id="permissions" class="col-md-12">
+                                <div id="modules" class="col-md-12">
                                     @TreeView(Model.UserProfile, Model.Modules)
                                 </div>
                                 @Functionalities(Model.UserProfile, Model.Modules)

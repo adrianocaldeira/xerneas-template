@@ -102,7 +102,7 @@
 }
 
 
-/*#############################END TAB#############################*/
+/*#############################TAB#############################*/
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
 }
@@ -358,3 +358,21 @@
     background-color: #a94442; /* active bg color */
 }
 /*#############################END TAB#############################*/
+
+/*#############################TREEVIEW#############################*/
+.treeview {
+    list-style: none;
+    padding-left: 22px;
+    margin-bottom: 0;
+    padding-top: 10px;
+}
+
+.treeview:first-child {
+    padding-left: 0;
+    padding-top: 0;
+}
+
+.treeview > li {
+    margin-bottom: 10px;   
+}
+/*#############################END TREEVIEW#############################*/

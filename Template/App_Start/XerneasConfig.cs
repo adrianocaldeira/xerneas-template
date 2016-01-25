@@ -47,6 +47,7 @@ namespace Template
                                 , "~/scripts/application/initialize.js"
                                 , "~/scripts/application/login.js"
                                 , "~/scripts/application/modules.js"
+                                , "~/scripts/application/userProfiles.js"
                                 ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/bundle")
