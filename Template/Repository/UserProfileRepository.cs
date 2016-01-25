@@ -1,7 +1,10 @@
 using System;
+using System.Linq;
+using NHibernate.Linq;
 using Template.Models;
 using Template.Models.Filters;
 using Thunder.Collections;
+using Thunder.Collections.Extensions;
 using Thunder.Data.Pattern;
 
 namespace Template.Repository
@@ -17,7 +20,19 @@ namespace Template.Repository
         /// <returns>Lista de <see cref="UserProfile" /></returns>
         public IPaging<UserProfile> Page(UserProfileFilter filter)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var query = Session.Query<UserProfile>();
+
+                if (filter.ByActive) query = query.Where(x => x.Active == filter.Active.Value);
+                if (filter.ByName) query = query.Where(x => x.Name.ToLower().Contains(filter.Name.ToLower()));
+
+                var userProfiles = query.OrderBy(x => x.Name).Paging(filter.CurrentPage, filter.PageSize);
+
+                transaction.Commit();
+
+                return userProfiles;
+            }
         }
 
         /// <summary>
@@ -27,7 +42,14 @@ namespace Template.Repository
         /// <returns>Pode excluir</returns>
         public bool CanDelete(int id)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var canDelete = Session.Query<User>().Count(x=>x.Profile.Id == id) == 0;
+
+                transaction.Commit();
+
+                return canDelete;
+            }
         }
 
         /// <summary>
@@ -38,7 +60,15 @@ namespace Template.Repository
         /// <returns>Nome do perfil existe ou não</returns>
         public bool ExistName(int id, string name)
         {
-            throw new NotImplementedException();
+            using (var transaction = Session.BeginTransaction())
+            {
+                var exist = Session.Query<UserProfile>().Count(x => x.Id != id &&
+                        x.Name.ToLower() == name.ToLower().Trim()) > 0;
+
+                transaction.Commit();
+
+                return exist;
+            }
         }
 
         /// <summary>
@@ -49,18 +79,18 @@ namespace Template.Repository
         /// </param>
         public new void Update(UserProfile entity)
         {
-            throw new NotImplementedException();
-        }
+            using (var transaction = Session.BeginTransaction())
+            {
+                var userProfile = Session.Get<UserProfile>(entity.Id);
 
-        /// <summary>
-        ///     Cria <see cref="UserProfile" />
-        /// </summary>
-        /// <param name="entity">
-        ///     <see cref="UserProfile" />
-        /// </param>
-        public new void Create(UserProfile entity)
-        {
-            throw new NotImplementedException();
+                userProfile.Active = entity.Active;
+                userProfile.Functionalities = entity.Functionalities;
+                userProfile.Name = entity.Name;
+                
+                Session.Update(userProfile);
+
+                transaction.Commit();
+            }
         }
     }
 }

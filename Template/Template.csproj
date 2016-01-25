@@ -366,6 +366,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoffController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -383,6 +384,7 @@
     <Compile Include="Models\Views\Functionalities\Form.cs" />
     <Compile Include="Models\Views\Login\Index.cs" />
     <Compile Include="Models\Views\Modules\TreeView.cs" />
+    <Compile Include="Models\Views\UserProfiles\Form.cs" />
     <Compile Include="Models\Views\Users\Form.cs" />
     <Compile Include="Models\Views\Users\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -417,6 +419,9 @@
     <Content Include="Views\Modules\Form.cshtml" />
     <None Include="Views\Modules\Index.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
+    <Content Include="Views\UserProfiles\_List.cshtml" />
+    <Content Include="Views\UserProfiles\Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

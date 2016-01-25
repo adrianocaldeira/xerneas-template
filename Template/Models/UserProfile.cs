@@ -49,7 +49,7 @@ namespace Template.Models
         /// <summary>
         ///     Recupera ou define estado do perfil
         /// </summary>
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public virtual bool Active { get; set; }
 
         /// <summary>

@@ -17,13 +17,6 @@ namespace Template.Controllers
 {
     [Authorization]
     [SessionPerRequest]
-    public class UserProfilesController : Controller
-    {
-        
-    }
-
-    [Authorization]
-    [SessionPerRequest]
     public class UsersController : Controller
     {
         public UsersController()

@@ -41,21 +41,5 @@ namespace Template.Repository
         ///     <see cref="UserProfile" />
         /// </param>
         new void Update(UserProfile entity);
-
-        /// <summary>
-        ///     Cria <see cref="UserProfile" />
-        /// </summary>
-        /// <param name="entity">
-        ///     <see cref="UserProfile" />
-        /// </param>
-        new void Create(UserProfile entity);
-
-        /// <summary>
-        ///     Exclui <see cref="UserProfile" />
-        /// </summary>
-        /// <param name="entity">
-        ///     <see cref="UserProfile" />
-        /// </param>
-        new void Delete(UserProfile entity);
-    }
+   }
 }

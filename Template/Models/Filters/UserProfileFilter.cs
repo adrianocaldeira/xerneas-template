@@ -1,17 +1,20 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using NHibernate.Criterion;
 using Thunder.Model;
 
 namespace Template.Models.Filters
 {
     /// <summary>
-    /// Filtro de <see cref="UserProfile"/>
+    ///     Filtro de <see cref="UserProfile" />
     /// </summary>
     public class UserProfileFilter : Filter
     {
         /// <summary>
-        /// Inicializa uma nova instância da classe <see cref="UserProfileFilter"/>
+        ///     Tamanho padrão da paginação
+        /// </summary>
+        public const int DefaultPageSize = 15;
+
+        /// <summary>
+        ///     Inicializa uma nova instância da classe <see cref="UserProfileFilter" />
         /// </summary>
         public UserProfileFilter()
         {
@@ -19,24 +22,19 @@ namespace Template.Models.Filters
         }
 
         /// <summary>
-        /// Tamanho padrão da paginação
-        /// </summary>
-        public const int DefaultPageSize = 15;
-
-        /// <summary>
-        /// Recupera ou define nome
+        ///     Recupera ou define nome
         /// </summary>
         [Display(Name = "Nome")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Recupera ou define ativo
+        ///     Recupera ou define ativo
         /// </summary>
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Por nome
+        ///     Por nome
         /// </summary>
         public bool ByName
         {
@@ -44,22 +42,11 @@ namespace Template.Models.Filters
         }
 
         /// <summary>
-        /// Por ativo
+        ///     Por ativo
         /// </summary>
         public bool ByActive
         {
             get { return Active.HasValue; }
-        }
-
-        /// <summary>
-        /// Critérios
-        /// </summary>
-        /// <returns></returns>
-        public IList<ICriterion> Criterions()
-        {
-            var criterions = new List<ICriterion>();
-
-            return criterions;
         }
     }
 }

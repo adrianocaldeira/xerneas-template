@@ -139,11 +139,15 @@
             var options = {
                 form: $grid.data("form") || "#filter",
                 load: true,
-                fieldPrefix: $grid.data("field-prefix") || "Filter",
+                fieldPrefix: $grid.data("field-prefix"),
                 pageSize: $grid.data("page-size") || 25,
                 loadOnDelete: true,
                 successOnDelete: $grid.data("success-on-delete") || undefined
             };
+
+            if (options.fieldPrefix === undefined) {
+                options.fieldPrefix = "Filter";
+            }
 
             if ($grid.data("load") !== undefined) {
                 options.load = $grid.data("load") === "true";
@@ -213,7 +217,7 @@
             }
         });
 
-        $(".make-ickeck").iCheck({
+        $(".make-icheck").iCheck({
             checkboxClass: "icheckbox_square-blue",
             radioClass: "iradio_square-blue"
         });
