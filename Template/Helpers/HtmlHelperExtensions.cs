@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
 namespace Template.Helpers
 {
@@ -77,6 +78,22 @@ namespace Template.Helpers
             dropdown.InnerHtml = options.ToString();
 
             return MvcHtmlString.Create(dropdown.ToString(TagRenderMode.Normal));
+        }
+        #endregion
+
+        #region Active
+
+        public static MvcHtmlString ActiveFor<T>(this HtmlHelper<T> htmlHelper, Expression<Func<T, bool>> expression, object htmlAttributes = null)
+        {
+            var attributes = HtmlAttributesUtility.ObjectToHtmlAttributesDictionary(htmlAttributes);
+
+            attributes["class"] = "make-switch";
+            attributes["data-on-color"] = "primary";
+            attributes["data-on-text"] = "Ativo";
+            attributes["data-off-color"] = "danger";
+            attributes["data-off-text"] = "Inativo";
+
+            return htmlHelper.CheckBoxFor(expression, attributes);
         }
         #endregion
     }

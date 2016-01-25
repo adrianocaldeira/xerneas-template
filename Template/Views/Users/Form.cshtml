@@ -37,31 +37,49 @@
                         <div class="col-lg-5">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Name)
-                                @Html.Thunder().TextBoxFor(x => x.User.Name, new {@class = "form-control"})
+                                @Html.Thunder().TextBoxFor(x => x.User.Name, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Email)
-                                @Html.Thunder().TextBoxFor(x => x.User.Email, new { @class = "form-control" })
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    @Html.Thunder().TextBoxFor(x => x.User.Email, new { @class = "form-control" })
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Login)
-                                @Html.Thunder().TextBoxFor(x => x.User.Login, new { @class = "form-control", autocomplete = "off" })
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    @Html.Thunder().TextBoxFor(x => x.User.Login, new { @class = "form-control", autocomplete = "off" })
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Password)
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
                                 @Html.Thunder().PasswordFor(x => x.User.Password, new { @class = "form-control", autocomplete = "off" })
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.User.Active)
-                                @Html.StatusFor(x => x.User.Active, "Selecione", Model.User.Active, new { @class = "form-control" })
+                                <div class="input-group">
+                                    @Html.ActiveFor(x => x.User.Active)
+                                </div>
                             </div>
                         </div>           
                     </div>

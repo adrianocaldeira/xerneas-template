@@ -141,6 +141,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-switch.css" />
+    <Content Include="Content\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -321,6 +323,8 @@
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\bootstrap-switch.js" />
+    <Content Include="Scripts\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\handlebars-v2.0.0.js" />
@@ -367,6 +371,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlAttributesUtility.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Extensions\TreeViewExtensions.cs" />
     <Compile Include="Models\Filters\UserFilter.cs" />

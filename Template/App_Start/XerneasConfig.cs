@@ -36,7 +36,8 @@ namespace Template
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")
                             .Include("~/scripts/jquery-{version}.js"
                                 , "~/scripts/jquery-ui-{version}.js"
-                                , "~/scripts/bootstrap.min.js"
+                                , "~/scripts/bootstrap.js"
+                                , "~/scripts/bootstrap-switch.js"
                                 , "~/content/sb-admin-2/dist/metisMenu/js/metisMenu.min.js"
                                 , "~/content/sb-admin-2/js/sb-admin-2.js"
                                 , "~/scripts/jquery.nestable.js"
@@ -50,6 +51,7 @@ namespace Template
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/bundle")
                 .Include("~/content/bootstrap.min.css"
+                , "~/content/bootstrap-switch.css"
                 , "~/content/thunderjs-{version}.css"
                 , "~/content/jquery.nestable.css"
                 ));

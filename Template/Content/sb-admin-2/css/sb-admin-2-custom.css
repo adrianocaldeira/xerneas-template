@@ -94,7 +94,7 @@
 .has-error .form-control {
     background: #f4b2b2 !important;
     background: rgba(244, 178, 178, 0.51) !important;
-    border: solid 1px #f4b2b2 !important;
+    border: solid 1px #a94442 !important;
 }
 
 .has-error .input-icon > i {
