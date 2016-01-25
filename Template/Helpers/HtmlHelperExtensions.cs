@@ -96,5 +96,80 @@ namespace Template.Helpers
             return htmlHelper.CheckBoxFor(expression, attributes);
         }
         #endregion
+
+        #region ButtonBack
+        public static MvcHtmlString ButtonBack(this HtmlHelper htmlHelper, string url)
+        {
+            var anchor = new TagBuilder("a");
+            var icon = new TagBuilder("i");
+
+            anchor.Attributes["href"] = url;
+            anchor.Attributes["title"] = "Voltar";
+
+            icon.AddCssClass("fa fa-reply-all");
+
+            anchor.InnerHtml += icon.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchor.ToString(TagRenderMode.Normal));
+        }
+        #endregion 
+
+        #region ButtonNew
+        public static MvcHtmlString ButtonNew(this HtmlHelper htmlHelper, string url, object htmlAttributes = null)
+        {
+            var anchor = new TagBuilder("a");
+            var icon = new TagBuilder("i");
+            var attributes = HtmlAttributesUtility.ObjectToHtmlAttributesDictionary(htmlAttributes);
+
+            anchor.MergeAttributes(attributes);
+            anchor.Attributes["href"] = url;
+
+            icon.AddCssClass("fa fa-plus");
+
+            anchor.InnerHtml += icon.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchor.ToString(TagRenderMode.Normal));
+        }
+
+        #endregion
+
+        #region ButtonDelete
+        public static MvcHtmlString ButtonDelete(this HtmlHelper htmlHelper, string url, object htmlAttributes = null)
+        {
+            var anchor = new TagBuilder("a");
+            var icon = new TagBuilder("i");
+            var attributes = HtmlAttributesUtility.ObjectToHtmlAttributesDictionary(htmlAttributes);
+
+            anchor.MergeAttributes(attributes);
+            anchor.AddCssClass("btn-delete-row");
+            anchor.Attributes["href"] = url;
+            anchor.Attributes["title"] = "Excluir";
+
+            icon.AddCssClass("fa fa-trash-o");
+
+            anchor.InnerHtml = icon.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchor.ToString(TagRenderMode.Normal));
+        }
+        #endregion        
+
+        #region ButtonEdit
+        public static MvcHtmlString ButtonEdit(this HtmlHelper htmlHelper, string url, object htmlAttributes = null)
+        {
+            var anchor = new TagBuilder("a");
+            var icon = new TagBuilder("i");
+            var attributes = HtmlAttributesUtility.ObjectToHtmlAttributesDictionary(htmlAttributes);
+
+            anchor.MergeAttributes(attributes);
+            anchor.Attributes["href"] = url;
+            anchor.Attributes["title"] = "Editar";
+
+            icon.AddCssClass("fa fa-pencil");
+
+            anchor.InnerHtml = icon.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchor.ToString(TagRenderMode.Normal));
+        }
+        #endregion  
     }
 }

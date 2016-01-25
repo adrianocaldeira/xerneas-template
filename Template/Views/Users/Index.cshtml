@@ -4,7 +4,7 @@
         <h1 class="page-header">
             <i class="fa fa-user"></i> Usuários
             <span class="pull-right">
-                <a href="@Url.Action("New")" title="Novo"><i class="fa fa-plus"></i></a>
+                @Html.ButtonNew(Url.Action("New"), new { title = "Novo" })
             </span>
         </h1>
     </div>

@@ -28,10 +28,10 @@
                             <td class="align-middle">@item.Email</td>
                             <td class="align-middle align-center">@(item.Active ? "Ativo" : "Inativo")</td>
                             <td class="align-middle align-center">
-                                <a href="@Url.Action("Edit", new {item.Id})" title="Editar"><i class="fa fa-pencil"></i></a>
+                                @Html.ButtonEdit(Url.Action("Edit", new {item.Id}))
                             </td>
                             <td class="align-middle align-center">
-                                <a href="@Url.Action("Delete", new { item.Id })" class="btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                @Html.ButtonDelete(Url.Action("Delete", new { item.Id }))
                             </td>
                         </tr>
                     }
