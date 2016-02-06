@@ -6,6 +6,7 @@ using Template.Models.Filters;
 using Template.Models.Views.UserProfiles;
 using Template.Properties;
 using Template.Repository;
+using Thunder;
 using Thunder.Extensions;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
@@ -59,6 +60,30 @@ namespace Template.Controllers
             {
                 UserProfile = userProfile,
                 Modules = ModuleRepository.Parents()
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save([Bind(Prefix = "UserProfile")] UserProfile model)
+        {
+            ExcludePropertiesWithKeyPart("UserProfile.Functionalities","Id");
+
+            if (!model.IsValid(ModelState, UserProfileRepository)) return Notify(NotifyType.Warning, ModelState);
+
+            if (model.IsNew())
+            {
+                UserProfileRepository.Create(model);
+            }
+            else
+            {
+                UserProfileRepository.Update(model);
+            }
+
+            return Success(new
+            {
+                Message = Resources.SaveWithSuccess,
+                Url = Url.Action("Index")
             });
         }
     }

@@ -18,7 +18,7 @@
                     }
                     @if (module.Functionalities.Any())
                     {
-                        <a href="#" data-toggle="modal" data-target="#modal-@module.Id">
+                        <a href="#" data-target="#modal-@module.Id">
                             @module.Name
                         </a>
                     }
@@ -43,7 +43,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title theme-font bold uppercase">Permissões da área @module.Name</h4>
+                            <h4 class="modal-title theme-font bold uppercase">Permissões do módulo @module.Name</h4>
                         </div>
                         <div class="modal-body functionalities" style="overflow: auto">
                             <ul>
@@ -103,7 +103,8 @@
                 {
                     data_control = "form",
                     data_redirect_on_success = "true",
-                    data_show_message_on_success = "true"
+                    data_show_message_on_success = "true",
+                    data_before = "beforeSave"
                 }))
         {
             @Html.AntiForgeryToken()

@@ -225,6 +225,7 @@
         $(".make-switch").bootstrapSwitch();
 
         $.thunder.alert.defaultOptions.title = "Aviso Importante";
+        $.thunder.alert.defaultOptions.type = "warning";
 
         $.thunder.confirm.defaultOptions.title = "Confirmação";
         $.thunder.confirm.defaultOptions.button.yes.label = "Sim";
