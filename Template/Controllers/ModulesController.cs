@@ -1,12 +1,16 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using Template.Filters;
-using Template.Models;
 using Template.Models.Extensions;
 using Template.Models.Views.Modules;
 using Template.Repository;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 using Thunder.Extensions;
+using Module = Template.Models.Module;
+
 namespace Template.Controllers
 {
     [SessionPerRequest]
@@ -39,6 +43,18 @@ namespace Template.Controllers
         [HttpGet]
         public ActionResult New(Module parent = null)
         {
+            Assembly asm = Assembly.GetExecutingAssembly();
+
+
+            var controlleractionlist = asm.GetTypes()
+                    .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
+                    .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+                    .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
+                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name, ReturnType = x.ReturnType.Name, Attributes = String.Join(",", x.GetCustomAttributes().Select(a => a.GetType().Name.Replace("Attribute", ""))) })
+                    .OrderBy(x => x.Controller).ThenBy(x => x.Action).ToList();
+
+            
+
             return View("Form", new Module
             {
                 Parent = parent != null ? ModuleRepository.Find(parent.Id) : null

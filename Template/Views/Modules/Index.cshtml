@@ -18,9 +18,9 @@
             <div class="dd3-content">
                 <i class="fa @module.CssClass"></i> @module.Name
                 <div class="pull-right">
-                    <a href="@Url.Action("New", new RouteValueDictionary{{"Parent.Id",module.Id}})" class="btn btn-xs btn-success" style="@(level >= 2 ? "display:none":"")" title="Adicionar"><i class="fa fa-plus-circle"></i></a>
-                    <a href="@Url.Action("Edit", new {module.Id})" class="btn btn-xs btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
-                    <a href="@Url.Action("Delete", new {module.Id})" class="btn btn-xs btn-danger btn-delete-row" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                    @Html.ButtonNew(Url.Action("New", new RouteValueDictionary {{"Parent.Id", module.Id}}), new { style = (level >= 2 ? "display:none" : "")})
+                    @Html.ButtonEdit(Url.Action("Edit", new { module.Id }))
+                    @Html.ButtonDelete(Url.Action("Delete", new { module.Id }))
                 </div>
             </div>
             @if (module.Childs.Any())
@@ -37,7 +37,7 @@
         <h1 class="page-header">
             Módulos
             <span class="pull-right">
-                <a class="btn btn-primary" href="@Url.Action("New")" title="Novo"><i class="fa fa-plus"></i></a>
+                @Html.ButtonNew(Url.Action("New"), new { title = "Novo" })
             </span>
         </h1>
     </div>
