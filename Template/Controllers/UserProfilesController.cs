@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Web.Mvc;
 using Template.Filters;
@@ -37,6 +38,23 @@ namespace Template.Controllers
         public ActionResult List(UserProfileFilter filter)
         {
             return PartialView("_List", UserProfileRepository.Page(filter));
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                if (!UserProfileRepository.CanDelete(id)) return Notify(NotifyType.Warning, Resources.DeleteBlockMessage);
+
+                UserProfileRepository.Delete(id);
+
+                return Success();
+            }
+            catch (Exception ex)
+            {
+                return Notify(NotifyType.Danger, ex.Message);
+            }
         }
 
         [HttpGet]
