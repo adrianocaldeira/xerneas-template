@@ -6,7 +6,18 @@
     <button type="button" class="close">&times;</button>
     Funcionalidade
 </div>
-<form role="form" data-module="modules.functionalities" data-action="form" data-parameters="@Model.Index" id="form-functionality">
+@using (Html.BeginForm("Save", "Functionalities", FormMethod.Post, new
+{
+    role = "form",
+    data_control = "form",
+    data_module = "modules.functionalities",
+    data_action = "form",
+    data_parameters = Model.Index,
+    data_show_message_on_success = "true",
+    data_success = "successOnSave"
+}))
+{
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Index)
     @Html.HiddenFor(m => m.Functionality.Id)
     <div class="modal-body modal-thunder-body container">
@@ -51,4 +62,4 @@
     <div class="modal-footer modal-thunder-footer  action-btn">
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
-</form>
+}

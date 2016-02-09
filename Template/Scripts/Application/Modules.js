@@ -86,8 +86,6 @@ app.modules.functionalities = {
         return functionalities;
     },
     form: function (index) {
-        var $form = $("#form-functionality");
-        console.log(index);
         if (index !== -1) {
             var functionality = window.parent.app.modules.functionalities.data[index];
 
@@ -101,19 +99,8 @@ app.modules.functionalities = {
             if (functionality.default) $("#Functionality_Default").attr("checked", "checked");
         }
 
-        //$.thunder.ajaxForm("#form-ticket-participant", {
-        //    success: function (result) {
-        //        window.parent.app.tickets.participants.save(result.data);
-        //    },
-        //    message: {
-        //        plugin: "alert",
-        //        alert: {
-        //            title: "Aviso",
-        //            width: 300
-        //        }
-        //    }
-        //});
-
-        //$("Participant_#Name").focus();
+        window.successOnSave = function(result) {
+            window.parent.app.modules.functionalities.save(result.data);
+        };
     }
 };
