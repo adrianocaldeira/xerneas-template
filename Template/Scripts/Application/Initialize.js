@@ -18,9 +18,17 @@
             var $this = $(this);
             var module = $this.data("module");
             var action = $this.data("action");
-            var parameters = window[$this.data("parameters") || {}];
+            var parameters = window[$this.data("parameters") || {}] || $this.data("parameters");
 
-            if (app[module] && app[module][action]) app[module][action].call($this, parameters || $this.data("parameters"));
+            if (app[module] && app[module][action]) {
+                app[module][action].call($this, parameters);
+            } else {
+                var parts = module.split(".");
+
+                if (parts.length === 2 && app[parts[0]][parts[1]][action]) {
+                    app[parts[0]][parts[1]][action].call($this, parameters);
+                }
+            }
         });
 
         $("[data-control=\"form\"]").each(function() {

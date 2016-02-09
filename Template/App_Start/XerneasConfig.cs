@@ -43,6 +43,7 @@ namespace Template
                                 , "~/scripts/jquery.nestable.js"
                                 , "~/scripts/icheck.js"
                                 , "~/scripts/thunderjs-{version}.js"
+                                , "~/scripts/handlebars-v{version}.js"
                                 , "~/scripts/application/app.js"
                                 , "~/scripts/application/initialize.js"
                                 , "~/scripts/application/login.js"

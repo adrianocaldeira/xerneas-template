@@ -26,7 +26,7 @@
         <h1 class="page-header">
             Módulos
             <span class="pull-right">
-                <a class="btn btn-primary" href="@Url.Action("Index")" title="Voltar"><i class="fa fa-reply-all"></i></a>
+                @Html.ButtonBack(Url.Action("Index"))
             </span>
         </h1>
     </div>
@@ -82,7 +82,7 @@
                             <div class="panel-title">
                                 <i class="fa fa-table"></i> Funcionalidades
                                 <div class="pull-right">
-                                    <a class="btn btn-primary btn-xs" href="@Url.Action("Form", "Functionalities")" id="add-functionality" data-index="-1"><i class="fa fa-plus-circle"></i></a>
+                                    @Html.ButtonNew(Url.Action("Form", "Functionalities"), new { id = "add-functionality", data_index = -1 })
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,8 @@
                                         <th class="align-middle">Action</th>
                                         <th class="align-middle align-center">Método Http</th>
                                         <th class="align-middle align-center">Principal</th>
-                                        <th class="align-middle align-center" style="width: 90px;">Operação</th>
+                                        <th class="align-middle align-center col-edit">Editar</th>
+                                        <th class="align-middle align-center col-delete">Excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -113,8 +114,10 @@
                                         {{#if default}}Sim{{else}}Não{{/if}}
                                     </td>
                                     <td class="align-middle align-center">
-                                        <a href="@Url.Action("Form", "Functionalities")" data-index="{{@Html.Raw("@index")}}" class="btn btn-xs btn-primary edit-functionality"><i class="fa fa-pencil"></i></a>
-                                        <a href="#" data-index="{{@Html.Raw("@index")}}" class="btn btn-xs btn-danger delete-functionality"><i class="fa fa-trash-o"></i></a>
+                                        @Html.ButtonEdit(Url.Action("Form", "Functionalities"), new { data_index = "{{@index}}", @class = "edit-functionality" })
+                                    </td>
+                                    <td class="align-middle align-center">
+                                        @Html.ButtonDelete("#", new { data_index = "{{@index}}", @class = "delete-functionality" })
                                     </td>
                                 </tr>
                                 {{/each}}

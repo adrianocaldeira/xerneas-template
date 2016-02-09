@@ -85,44 +85,21 @@ app.modules.functionalities = {
 
         return functionalities;
     },
-    form: function (parameters) {
+    form: function (index) {
         var $form = $("#form-functionality");
+        console.log(index);
+        if (index !== -1) {
+            var functionality = window.parent.app.modules.functionalities.data[index];
 
-        //if (parameters.index !== -1) {
-        //    var functionality = window.parent.app.modules.functionalities.data[parameters.index];
-        //    $("#Id").val(functionality.id);
-        //    $("#Name").val(functionality.name);
-        //    $("#Action").val(functionality.action);
-        //    $("#Controller").val(functionality.controller);
-        //    $("#default").val(functionality.default);
-        //    $("#Participant_Gender_Id").val(functionality.gender.id);
-        //    $("#Participant_Position").val(functionality.position);
-        //    $("#Participant_BirthDate").val(functionality.birthDate);
-        //    $("#Participant_MobilePhone").val(functionality.mobilePhone);
-        //}
+            $("#Functionality_Id").val(functionality.id);
+            $("#Functionality_Name").val(functionality.name);
+            $("#Functionality_Description").val(functionality.description);
+            $("#Functionality_Controller").val(functionality.controller);
+            $("#Functionality_Action").val(functionality.action);
+            $("#Functionality_HttpMethod").val(functionality.httpMethod);
 
-        //$.each(window.parent.app.tickets.participants.data, function (i) {
-        //    $form.append($("<input />").attr({
-        //        "type": "hidden",
-        //        "name": "Cpfs[" + i + "].Cpf",
-        //        "value": this.cpf
-        //    })).append($("<input />").attr({
-        //        "type": "hidden",
-        //        "name": "Cpfs[" + i + "].Index",
-        //        "value": i
-        //    }));
-        //});
-
-        //$("#same-informations").on("click", function () {
-        //    if ($(this).is(":checked")) {
-        //        var parent = window.parent;
-        //        $("#Participant_Name").val(parent.$("#Ticket_ResponsibleName").val());
-        //        $("#Participant_Email").val(parent.$("#Ticket_ResponsibleEmail").val());
-        //        $("#Participant_MobilePhone").val(parent.$("#Ticket_Client_MobilePhone").val());
-        //    }
-
-        //    $("#Participant_Name").focus();
-        //});
+            if (functionality.default) $("#Functionality_Default").attr("checked", "checked");
+        }
 
         //$.thunder.ajaxForm("#form-ticket-participant", {
         //    success: function (result) {

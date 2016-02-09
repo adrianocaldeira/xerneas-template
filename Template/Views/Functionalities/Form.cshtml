@@ -6,37 +6,39 @@
     <button type="button" class="close">&times;</button>
     Funcionalidade
 </div>
-<form role="form">
+<form role="form" data-module="modules.functionalities" data-action="form" data-parameters="@Model.Index" id="form-functionality">
+    @Html.HiddenFor(m => m.Index)
+    @Html.HiddenFor(m => m.Functionality.Id)
     <div class="modal-body modal-thunder-body container">
         <div class="row">
             <div class="col-xs-6">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Functionality.Name)
-                    @Html.Thunder().TextBoxFor(m => m.Functionality.Name, new {@class="form-control"})
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Name, new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Functionality.Description)
-                    @Html.Thunder().TextBoxFor(m => m.Functionality.Description, new {@class = "form-control"})
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Description, new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Functionality.Controller)
-                    @Html.Thunder().TextBoxFor(m => m.Functionality.Controller, new {@class = "form-control"})
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Controller, new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Functionality.Action)
-                    @Html.Thunder().TextBoxFor(m => m.Functionality.Action, new {@class = "form-control"})
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.Action, new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Functionality.HttpMethod)
-                    @Html.Thunder().TextBoxFor(m => m.Functionality.HttpMethod, new {@class = "form-control"})
+                    @Html.Thunder().TextBoxFor(m => m.Functionality.HttpMethod, new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-xs-2">
