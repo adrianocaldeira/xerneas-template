@@ -42,6 +42,7 @@ namespace Template
                                 , "~/content/sb-admin-2/js/sb-admin-2.js"
                                 , "~/scripts/jquery.nestable.js"
                                 , "~/scripts/icheck.js"
+                                , "~/scripts/select2.full.js"
                                 , "~/scripts/thunderjs-{version}.js"
                                 , "~/scripts/handlebars-v{version}.js"
                                 , "~/scripts/application/app.js"
@@ -56,6 +57,7 @@ namespace Template
                 , "~/content/bootstrap-switch.css"
                 , "~/content/thunderjs-{version}.css"
                 , "~/content/jquery.nestable.css"
+                , "~/content/select2.css"
                 ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/sb-admin-2/dist/metisMenu/css/bundle")

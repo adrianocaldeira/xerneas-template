@@ -272,6 +272,8 @@
     <Content Include="Content\sb-admin-2\dist\metisMenu\js\metisMenu.js" />
     <Content Include="Content\sb-admin-2\dist\metisMenu\js\metisMenu.min.js" />
     <Content Include="Content\sb-admin-2\js\sb-admin-2.js" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -350,6 +352,8 @@
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.nestable.js" />
+    <Content Include="Scripts\select2.full.js" />
+    <Content Include="Scripts\select2.full.min.js" />
     <Content Include="Scripts\thunderjs-1.1.2.js" />
     <Content Include="Scripts\thunderjs.min-1.1.2.js" />
     <Content Include="Web.config">
