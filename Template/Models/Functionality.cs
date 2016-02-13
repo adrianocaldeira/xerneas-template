@@ -10,14 +10,6 @@ namespace Template.Models
     public class Functionality : Persist<Functionality, int>
     {
         /// <summary>
-        ///     Inicializa uma nova instância da classe <see cref="Functionality" />.
-        /// </summary>
-        public Functionality()
-        {
-            HttpMethod = WebRequestMethods.Http.Get;
-        }
-
-        /// <summary>
         ///     Recupera ou define nome
         /// </summary>
         public virtual Module Module { get; set; }

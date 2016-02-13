@@ -31,6 +31,16 @@
             }
         });
 
+        $("[data-control=\"select-multiple\"]").each(function () {
+            var $this = $(this);
+
+            $this.addClass("select2")
+                .select2({
+                    allowClear: true,
+                    theme: "bootstrap"
+                });
+        });
+
         $("[data-control=\"form\"]").each(function() {
             var $form = $(this);
             var options = {

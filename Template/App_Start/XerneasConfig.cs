@@ -58,6 +58,7 @@ namespace Template
                 , "~/content/thunderjs-{version}.css"
                 , "~/content/jquery.nestable.css"
                 , "~/content/select2.css"
+                , "~/content/select2-bootstrap.css"
                 ));
 
             BundleTable.Bundles.Add(new StyleBundle("~/content/sb-admin-2/dist/metisMenu/css/bundle")

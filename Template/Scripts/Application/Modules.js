@@ -96,8 +96,21 @@ app.modules.functionalities = {
             $("#Functionality_Action").val(functionality.action);
             $("#Functionality_HttpMethod").val(functionality.httpMethod);
 
+            $("#SelectedHttpMethod").val($("#Functionality_HttpMethod").val().split(","));
+
             if (functionality.default) $("#Functionality_Default").attr("checked", "checked");
         }
+
+        window.beforeOnSave = function() {
+            var data = [];
+            var $selectedHttpMethod = $("#SelectedHttpMethod");
+
+            if ($selectedHttpMethod.val()) {
+                $("#Functionality_HttpMethod").val($selectedHttpMethod.val().join(","));
+            }
+
+            return data;
+        };
 
         window.successOnSave = function(result) {
             window.parent.app.modules.functionalities.save(result.data);
