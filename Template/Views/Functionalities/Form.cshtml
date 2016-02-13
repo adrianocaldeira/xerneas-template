@@ -53,8 +53,11 @@
                 </div>
             </div>
             <div class="col-xs-2">
-                <div class="checkbox">
-                    <label style="font-weight: 700">@Html.CheckBoxFor(m => m.Functionality.Default) Principal</label>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Functionality.Default)
+                    <div class="input-group">
+                        @Html.YesOrNoFor(x => x.Functionality.Default)
+                    </div>
                 </div>
             </div>
         </div>

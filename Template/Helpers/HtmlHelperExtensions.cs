@@ -97,6 +97,22 @@ namespace Template.Helpers
         }
         #endregion
 
+        #region Active
+
+        public static MvcHtmlString YesOrNoFor<T>(this HtmlHelper<T> htmlHelper, Expression<Func<T, bool>> expression, object htmlAttributes = null)
+        {
+            var attributes = HtmlAttributesUtility.ObjectToHtmlAttributesDictionary(htmlAttributes);
+
+            attributes["class"] = "make-switch";
+            attributes["data-on-color"] = "primary";
+            attributes["data-on-text"] = "Sim";
+            attributes["data-off-color"] = "danger";
+            attributes["data-off-text"] = "Não";
+
+            return htmlHelper.CheckBoxFor(expression, attributes);
+        }
+        #endregion
+
         #region ButtonBack
         public static MvcHtmlString ButtonBack(this HtmlHelper htmlHelper, string url)
         {
