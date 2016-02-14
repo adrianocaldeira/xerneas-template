@@ -1,4 +1,7 @@
 ﻿app.modules.form = function (options) {
+    $.each(options.functionalities, function(i) {
+        options.functionalities[i].index = i;
+    });
     app.modules.functionalities.data = options.functionalities;
     app.modules.functionalities.init();
 };
@@ -10,11 +13,15 @@ app.modules.functionalities = {
             e.preventDefault();
 
             var $this = $(this);
-            var url = $this.attr("href") + "?Index=" + $this.data("index");
-            
-            $.thunder.modal(url, {
+            var getData = function () {
+                return $this.is(".edit-functionality") ? app.modules.functionalities.data[$this.data("index")] : {};
+            };
+
+            $.thunder.modal($this.attr("href") + "?index=" + $this.data("index"), {
                 width: 800,
-                height: 400
+                height: 400,
+                httpMethod: "post",
+                data: getData()
             });
         });
 
@@ -85,22 +92,7 @@ app.modules.functionalities = {
 
         return functionalities;
     },
-    form: function (index) {
-        if (index !== -1) {
-            var functionality = window.parent.app.modules.functionalities.data[index];
-
-            $("#Functionality_Id").val(functionality.id);
-            $("#Functionality_Name").val(functionality.name);
-            $("#Functionality_Description").val(functionality.description);
-            $("#Functionality_Controller").val(functionality.controller);
-            $("#Functionality_Action").val(functionality.action);
-            $("#Functionality_HttpMethod").val(functionality.httpMethod);
-
-            $("#SelectedHttpMethod").val($("#Functionality_HttpMethod").val().split(","));
-
-            if (functionality.default) $("#Functionality_Default").attr("checked", "checked");
-        }
-
+    form: function () {
         window.beforeOnSave = function() {
             var data = [];
             var $selectedHttpMethod = $("#SelectedHttpMethod");

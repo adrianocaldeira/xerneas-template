@@ -11,7 +11,7 @@ if (typeof jQuery.ui === "undefined") {
         $.thunder = {};
     };
 
-    $.thunder.version = "1.1.2";
+    $.thunder.version = "1.1.3";
 
     $.thunder.statusCode = {
         400: "Bad request",
@@ -99,6 +99,12 @@ if (typeof jQuery.ui === "undefined") {
                         show(503);
                     }
                 };
+            },
+            guid: function() {
+                var guidPart = function() {
+                    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+                };
+                return guidPart() + guidPart() + "-" + guidPart() + "-" + guidPart() + "-" + guidPart() + "-" + guidPart() + guidPart() + guidPart();
             }
         };
     };
@@ -340,23 +346,24 @@ if (typeof jQuery.ui === "undefined") {
                 return (url.indexOf("?") === -1 ? "?" : "&");
             };
 
-            if (jQuery.isPlainObject(defaults.data) && !jQuery.isEmptyObject(defaults.data)) {
-                url += delimiter() + $.param(defaults.data);
-            } else {
-                if (typeof defaults.data === "string") {
-                    url += delimiter() + defaults.data;
+            if (defaults.httpMethod === "get") {
+                if (jQuery.isPlainObject(defaults.data) && !jQuery.isEmptyObject(defaults.data)) {
+                    url += delimiter() + $.param(defaults.data);
+                } else {
+                    if (typeof defaults.data === "string") {
+                        url += delimiter() + defaults.data;
+                    }
                 }
-            }
+            } 
 
             if (defaults.forceReload) {
-                url += delimiter() + "forceReload=" + parseInt(Math.random() * 9999999999);
+                url += delimiter() + "forceReload=" + parseInt(Math.random() * 9999999999, 10);
             }
 
             url += delimiter() + "forceFocusOnLoadInModal=" + defaults.forceFocusOnLoadInModal;
 
             return url;
         };
-
         var loading = function () {
             var $loading = $("<div></div>").addClass("thunder-modal-loading");
 
@@ -369,15 +376,20 @@ if (typeof jQuery.ui === "undefined") {
 
             return $loading;
         };
-
+        var iframeName = $.thunder.utility().guid();
         var $this = $("." + defaults.className + "-iframe");
         var $iframe = $("<iframe></iframe>")
-            .attr("frameborder", defaults.iframe.frameBorder)
-            .attr("marginheight", defaults.iframe.marginHeight)
-            .attr("marginwidth", defaults.iframe.marginWidth)
-            .attr("scrolling", defaults.iframe.scrolling)
-            .attr("src", getUrl())
-            .hide();
+            .attr({
+                "frameborder": defaults.iframe.frameBorder,
+                "marginheight": defaults.iframe.marginHeight,
+                "marginwidth": defaults.iframe.marginWidth,
+                "scrolling": defaults.iframe.scrolling,
+                "name": iframeName
+            }).hide();
+
+        if (defaults.httpMethod === "get") {
+            $iframe.attr("src", getUrl());
+        }
 
         if ($this.length === 0) {
             $this = $("<div></div>").addClass(defaults.className + "-iframe");
@@ -403,6 +415,41 @@ if (typeof jQuery.ui === "undefined") {
                 $iframe.attr("width", $this.width()).attr("height", $this.height());
 
                 $this.append($loading).append($iframe);
+
+                if (defaults.httpMethod === "post") {
+                    var $formToIframe = $("<form></form>")
+                        .attr({
+                            "action": getUrl(),
+                            "method": "post",
+                            "target": iframeName,
+                            "id": $.thunder.utility().guid()
+                        });
+                    var parameters = [];
+
+                    if ($.isArray(defaults.data)) {
+                        $.each(defaults.data, function () {
+                            $.each(this, function (k, v) {
+                                parameters.push({ name: k, value: v });
+                            });
+                        });
+                    } else if ($.isPlainObject(defaults.data) && !$.isEmptyObject(defaults.data)) {
+                        $.each(defaults.data, function (k, v) {
+                            parameters.push({ name: k, value: v });
+                        });
+                    }
+
+                    $.each(parameters, function() {
+                        $formToIframe.append($("<input />").attr({
+                            "type": "hidden",
+                            "name": this.name,
+                            "value": this.value
+                        }));
+                    });
+
+                    $("body").append($formToIframe);
+
+                    $formToIframe.submit().remove();
+                }
 
                 $iframe.load(function () {
                     $iframe.show();
@@ -438,6 +485,7 @@ if (typeof jQuery.ui === "undefined") {
 
     $.thunder.modal.defaultOptions = {
         className: "thunder-modal",
+        httpMethod: "get",
         iframe: {
             frameBorder: 0,
             marginHeight: 0,
@@ -1047,8 +1095,6 @@ if (typeof jQuery.ui === "undefined") {
                     setCurrentPage.call(this, 0);
                     load.call($grid);
                 });
-
-            console.log($form);
 
             $grid.data("loading", $loading)
                 .data("message", $message)

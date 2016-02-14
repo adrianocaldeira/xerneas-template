@@ -17,9 +17,9 @@ namespace Template.Models.Views.Functionalities
             };
             SelectedHttpMethod = new List<string>();
         }
-        public int Index { get; set; }
         public IList<string> SelectedHttpMethod { get; set; }
         public Functionality Functionality { get; set; }
         public IList<SelectListItem> HttpMethods { get; set; }
+        public int Index { get; set; }
     }
 }

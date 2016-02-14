@@ -309,8 +309,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="Content\thunderjs-1.1.2.css" />
-    <Content Include="Content\thunderjs.min-1.1.2.css" />
+    <Content Include="Content\thunderjs-1.1.3.css" />
+    <Content Include="Content\thunderjs.min-1.1.3.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <EmbeddedResource Include="Models\Orm\Functionality.hbm.xml" />
@@ -356,8 +356,8 @@
     <Content Include="Scripts\jquery.nestable.js" />
     <Content Include="Scripts\select2.full.js" />
     <Content Include="Scripts\select2.full.min.js" />
-    <Content Include="Scripts\thunderjs-1.1.2.js" />
-    <Content Include="Scripts\thunderjs.min-1.1.2.js" />
+    <Content Include="Scripts\thunderjs-1.1.3.js" />
+    <Content Include="Scripts\thunderjs.min-1.1.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

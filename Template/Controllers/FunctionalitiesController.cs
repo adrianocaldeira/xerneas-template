@@ -12,13 +12,13 @@ namespace Template.Controllers
     [SessionPerRequest]
     public class FunctionalitiesController : Controller
     {
-        [HttpGet]
-        public ActionResult Form(int index)
+        [HttpPost]
+        public ActionResult Form(Functionality functionality, int index)
         {
             return View(new Form
             {
-                Index = index,
-                Functionality = new Functionality()
+                Functionality = functionality,
+                Index = index
             });
         }
 
@@ -30,14 +30,13 @@ namespace Template.Controllers
             
             return Success(new
             {
-                Index = index,
                 model.Id,
                 model.Name,
                 model.Action,
                 model.Controller,
                 model.Default,
                 model.Description,
-                model.HttpMethod
+                model.HttpMethod, index
             });
         }
     }

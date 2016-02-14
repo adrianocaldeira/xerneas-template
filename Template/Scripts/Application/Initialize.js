@@ -33,12 +33,21 @@
 
         $("[data-control=\"select-multiple\"]").each(function () {
             var $this = $(this);
+            var bind = function() {
+                $this.addClass("select2")
+                    .select2({
+                        allowClear: true,
+                        theme: "bootstrap"
+                    });
+            };
+            if ($("[data-window=\"modal\"]").size() > 0) {
+                window.setTimeout(function() {
+                    bind();
+                }, 0);
+            } else {
+                bind();
+            }
 
-            $this.addClass("select2")
-                .select2({
-                    allowClear: true,
-                    theme: "bootstrap"
-                });
         });
 
         $("[data-control=\"form\"]").each(function() {
