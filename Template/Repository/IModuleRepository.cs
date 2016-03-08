@@ -25,9 +25,26 @@ namespace Template.Repository
         IList<Module> Find(User user);
 
         /// <summary>
-        /// Organiza módulos
+        ///     Organiza módulos
         /// </summary>
         /// <param name="modules"></param>
         void Organizer(IList<Module> modules);
+
+        /// <summary>
+        ///     Verifica se existe módulo pelo nome
+        /// </summary>
+        /// <param name="id">Código</param>
+        /// <param name="parent">
+        ///     <see cref="Module" />
+        /// </param>
+        /// <param name="name">Nome</param>
+        /// <returns></returns>
+        bool Exist(int id, Module parent, string name);
+
+        /// <summary>
+        ///     Cria <see cref="Module" />
+        /// </summary>
+        /// <param name="module"></param>
+        new void Create(Module module);
     }
 }

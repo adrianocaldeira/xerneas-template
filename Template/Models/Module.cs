@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
+using Template.Repository;
 using Thunder.Data.Pattern;
+using Thunder.Extensions;
 
 namespace Template.Models
 {
@@ -24,7 +27,7 @@ namespace Template.Models
         /// <summary>
         ///     Recupera ou define código
         /// </summary>
-        [Display(Name = "Módulo \"Pai\"")]
+        [Display(Name = "Módulo Pai")]
         public new virtual int Id
         {
             get { return base.Id; }
@@ -34,7 +37,9 @@ namespace Template.Models
         /// <summary>
         ///     Recupera ou define nome do módulo
         /// </summary>
+        [Required]
         [Display(Name = "Nome")]
+        [StringLength(100)]
         public virtual string Name { get; set; }
 
         /// <summary>
@@ -46,11 +51,13 @@ namespace Template.Models
         ///     Recupera ou define descrição do módulo
         /// </summary>
         [Display(Name = "Descrição")]
+        [StringLength(100)]
         public virtual string Description { get; set; }
 
         /// <summary>
         ///     Recupera ou define css class
         /// </summary>
+        [StringLength(50)]
         public virtual string CssClass { get; set; }
 
         /// <summary>
@@ -127,6 +134,32 @@ namespace Template.Models
             return AllFunctionalities().Any(functionality =>
                 functionality.Controller.ToLower().Equals(controllerName.ToLower()) &&
                 functionality.Action.ToLower().Equals(actionName.ToLower()));
+        }
+
+        /// <summary>
+        ///     Valida <see cref="Module" />
+        /// </summary>
+        /// <param name="moduleRepository"></param>
+        /// <param name="modelState"></param>
+        /// <returns></returns>
+        public virtual bool IsValid(IModuleRepository moduleRepository, ModelStateDictionary modelState)
+        {
+            modelState.Remove("Parent.Id");
+            modelState.Remove("Parent.Name");
+
+            if (IsNew())
+            {
+                Parent = null;
+            }
+
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                if (moduleRepository.Exist(Id, Parent, Name))
+                {
+                    modelState.AddModelError("Name", "O nome do módulo \"{0}\" já encontra-se cadastrado.".With(Name));    
+                }
+            }
+            return modelState.IsValid;
         }
     }
 }

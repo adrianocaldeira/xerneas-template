@@ -63,6 +63,63 @@ namespace Template.Repository
             }
         }
 
+        /// <summary>
+        ///     Verifica se existe módulo pelo nome
+        /// </summary>
+        /// <param name="id">Código</param>
+        /// <param name="parent">
+        ///     <see cref="Module" />
+        /// </param>
+        /// <param name="name">Nome</param>
+        /// <returns></returns>
+        public bool Exist(int id, Module parent, string name)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var queryable = Session.Query<Module>().Where(x => x.Id != id 
+                    && x.Name.Trim().ToLower().Contains(name.Trim().ToLower()));
+
+                if (parent == null || parent.Id == 0)
+                {
+                    queryable = queryable.Where(x => x.Parent == null);
+                }
+                else
+                {
+                    queryable = queryable.Where(x => x.Parent.Id == parent.Id);                    
+                }
+
+                var exist = queryable.Count() > 0;
+
+                transaction.Commit();
+
+                return exist;
+            }
+        }
+
+        /// <summary>
+        ///     Cria <see cref="Module" />
+        /// </summary>
+        /// <param name="module"></param>
+        public new void Create(Module module)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var order = Session.Query<Module>().Where(x => x.Parent == null)
+                    .OrderBy(x => x.Order)
+                    .Select(x=>x.Order)
+                    .ToList()
+                    .LastOrDefault();
+
+                if (order > 0) order++;
+
+                module.Order = order;
+
+                Session.Save(module);
+
+                transaction.Commit();
+            }
+        }
+
         private void Organizer(Module moduleDb, IList<Module> modules)
         {
             if (modules.Any())
