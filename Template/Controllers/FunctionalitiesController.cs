@@ -17,7 +17,7 @@ namespace Template.Controllers
         {
             return View(new Form
             {
-                Functionality = functionality,
+                Functionality = index >= 0 ? functionality : new Functionality(),
                 Index = index
             });
         }

@@ -159,6 +159,19 @@ namespace Template.Models
                     modelState.AddModelError("Name", "O nome do módulo \"{0}\" já encontra-se cadastrado.".With(Name));    
                 }
             }
+
+            if (Functionalities != null && Functionalities.Any())
+            {
+                if (Functionalities.Count(x => x.Default) == 0)
+                {
+                    modelState.AddModelError("Functionalities", "É necessário definir ao menos uma funcionalidade como sendo a principal do módulo.");
+                }
+
+                if (Functionalities.Count(x => x.Default) > 1)
+                {
+                    modelState.AddModelError("Functionalities", "É permitido definir somente uma funcionalidade como a principal do módulo.");
+                }
+            }
             return modelState.IsValid;
         }
     }

@@ -88,7 +88,7 @@ namespace Template.Controllers
                         Controller = "Functionalities",
                         Description = "Cria/Edita funcionalidade de um módulo",
                         Module = modulo,
-                        HttpMethod = "GET",
+                        HttpMethod = "POST",
                         Name = "Criar/Editar Funcionalidade"
                     });
                     modulo.Functionalities.Add(new Functionality

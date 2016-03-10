@@ -46,5 +46,11 @@ namespace Template.Repository
         /// </summary>
         /// <param name="module"></param>
         new void Create(Module module);
+
+        /// <summary>
+        ///     Atualiza módulo
+        /// </summary>
+        /// <param name="module"></param>
+        new void Update(Module module);
     }
 }

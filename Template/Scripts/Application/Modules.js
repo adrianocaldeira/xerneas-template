@@ -4,6 +4,10 @@
     });
     app.modules.functionalities.data = options.functionalities;
     app.modules.functionalities.init();
+
+    window.onBeforeSave = function() {
+        return app.modules.functionalities.toParameters();
+    };
 };
 
 app.modules.functionalities = {
@@ -77,17 +81,17 @@ app.modules.functionalities = {
         var functionalities = [];
 
         $.each(this.data, function (i) {
-            var functionalities = {};
+            var functionality = {};
 
-            functionalities["Functionalities[" + i + "].Name"] = this.name;
-            functionalities["Functionalities[" + i + "].Action"] = this.action;
-            functionalities["Functionalities[" + i + "].Controller"] = this.controller;
-            functionalities["Functionalities[" + i + "].Default"] = this.default;
-            functionalities["Functionalities[" + i + "].Description"] = this.description;
-            functionalities["Functionalities[" + i + "].HttpMethod"] = this.httpMethod;
-            functionalities["Functionalities[" + i + "].Id"] = this.id;
+            functionality["Functionalities[" + i + "].Name"] = this.name;
+            functionality["Functionalities[" + i + "].Action"] = this.action;
+            functionality["Functionalities[" + i + "].Controller"] = this.controller;
+            functionality["Functionalities[" + i + "].Default"] = this.default;
+            functionality["Functionalities[" + i + "].Description"] = this.description;
+            functionality["Functionalities[" + i + "].HttpMethod"] = this.httpMethod;
+            functionality["Functionalities[" + i + "].Id"] = this.id;
 
-            functionalities.push(functionalities);
+            functionalities.push(functionality);
         });
 
         return functionalities;

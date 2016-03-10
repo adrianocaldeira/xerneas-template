@@ -120,6 +120,26 @@ namespace Template.Repository
             }
         }
 
+        /// <summary>
+        ///     Atualiza módulo
+        /// </summary>
+        /// <param name="module"></param>
+        public new void Update(Module module)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var moduleDb = Session.Get<Module>(module.Id);
+
+                moduleDb.CssClass = module.CssClass;
+                moduleDb.Description = module.Description;
+                moduleDb.Name = module.Name;
+
+                Session.Update(moduleDb);
+
+                transaction.Commit();
+            }
+        }
+
         private void Organizer(Module moduleDb, IList<Module> modules)
         {
             if (modules.Any())
