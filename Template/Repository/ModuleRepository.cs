@@ -129,10 +129,38 @@ namespace Template.Repository
             using (var transaction = Session.BeginTransaction())
             {
                 var moduleDb = Session.Get<Module>(module.Id);
-
+                var functionalitiesForInsert = module.Functionalities.Where(x => x.Id.Equals(0));
+                var functionalitiesForUpdate = module.Functionalities.Where(x => x.Id > 0);
+                var functionalitiesForDelete = moduleDb.Functionalities.Where(functionality => !module.Functionalities.Contains(functionality)).ToList();
+                
                 moduleDb.CssClass = module.CssClass;
                 moduleDb.Description = module.Description;
                 moduleDb.Name = module.Name;
+
+                foreach (var functionality in functionalitiesForInsert)
+                {
+                    functionality.Module = moduleDb;
+                    moduleDb.Functionalities.Add(functionality);
+                }
+                
+                foreach (var functionality in functionalitiesForUpdate)
+                {
+                    var functionalityDb = moduleDb.Functionalities.Single(x => x.Id == functionality.Id);
+
+                    functionalityDb.Action = functionality.Action;
+                    functionalityDb.Controller = functionality.Controller;
+                    functionalityDb.Default = functionality.Default;
+                    functionalityDb.Description = functionality.Description;
+                    functionalityDb.HttpMethod = functionality.HttpMethod;
+                    functionalityDb.Name = functionality.Name;
+                }
+
+                foreach (var functionality in functionalitiesForDelete)
+                {
+                    moduleDb.Functionalities.Remove(functionality);
+
+                    Session.Delete(functionality);
+                }
 
                 Session.Update(moduleDb);
 
