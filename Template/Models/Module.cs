@@ -147,7 +147,7 @@ namespace Template.Models
             modelState.Remove("Parent.Id");
             modelState.Remove("Parent.Name");
 
-            if (IsNew())
+            if (IsNew() && Parent.Id <= 0)
             {
                 Parent = null;
             }

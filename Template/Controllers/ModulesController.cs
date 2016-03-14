@@ -64,6 +64,31 @@ namespace Template.Controllers
             return View("Form", module);
         }
 
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var module = ModuleRepository.Find(id);
+
+            if (module == null)
+            {
+                return Notify(NotifyType.Warning, "Módulo {0} não foi encontrado.".With(id));
+            }
+
+            if (module.Childs.Any())
+            {
+                return Notify(NotifyType.Warning, "Módulo não pode ser excluído, pois possui outro(s) módulo(s) relacionado(s).");
+            }
+
+            if (ModuleRepository.HasFunctionalitiesRelationshipUserProfiles(module))
+            {
+                return Notify(NotifyType.Warning, "Módulo não pode ser excluído, pois possui funcionalidade(s) relacionada(s) com algum perfil de usuário.");
+            }
+
+            ModuleRepository.Delete(module);
+
+            return Success();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Module module)

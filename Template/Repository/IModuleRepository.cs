@@ -52,5 +52,12 @@ namespace Template.Repository
         /// </summary>
         /// <param name="module"></param>
         new void Update(Module module);
+
+        /// <summary>
+        ///     Possui funcionaliade com relacionamento com algum perfil de usuário
+        /// </summary>
+        /// <param name="module"></param>
+        /// <returns></returns>
+        bool HasFunctionalitiesRelationshipUserProfiles(Module module);
     }
 }

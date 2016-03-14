@@ -168,6 +168,25 @@ namespace Template.Repository
             }
         }
 
+        /// <summary>
+        ///     Possui funcionaliade com relacionamento com algum perfil de usuário
+        /// </summary>
+        /// <param name="module"></param>
+        /// <returns></returns>
+        public bool HasFunctionalitiesRelationshipUserProfiles(Module module)
+        {
+            using (var transaction = Session.BeginTransaction())
+            {
+                var has = Session.Query<UserProfile>()
+                    .Count(userProfile => userProfile.Functionalities.Any(functionality => 
+                        module.Functionalities.Contains(functionality))) > 0;
+
+                transaction.Commit();
+
+                return has;
+            }
+        }
+
         private void Organizer(Module moduleDb, IList<Module> modules)
         {
             if (modules.Any())
