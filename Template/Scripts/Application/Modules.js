@@ -1,4 +1,14 @@
-﻿app.modules.form = function (options) {
+﻿app.modules.index = function () {
+    this.addEvent("onDeleteModule", function() {
+        $(this).closest(".dd-item").remove();
+    }).addEvent("onChangeModule", function() {
+        $(".dd-list a.add-sub-module", this).show();
+        $(".dd-list li li li a.add-sub-module", this).hide();
+        console.log("change");
+    });
+};
+
+app.modules.form = function (options) {
     $.each(options.functionalities, function(i) {
         options.functionalities[i].index = i;
     });

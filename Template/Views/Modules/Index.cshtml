@@ -1,14 +1,5 @@
 ﻿@using Template.Models
 @model IList<Module>
-@section Scripts
-{
-    <script type="text/javascript">
-        window.sortModule = function() {
-            $(".dd-list a.btn-success", this).show();
-            $(".dd-list li li li a.btn-success", this).hide();
-        };
-    </script>
-}
 @helper TreeView(IOrderedEnumerable<Module> modules, int level)
 {
     foreach (var module in modules)
@@ -18,7 +9,7 @@
             <div class="dd3-content">
                 <i class="fa @module.CssClass"></i> @module.Name
                 <div class="pull-right">
-                    @Html.ButtonNew(Url.Action("New", new RouteValueDictionary {{"Parent.Id", module.Id}}), new { style = (level >= 2 ? "display:none" : "")})
+                    @Html.ButtonNew(Url.Action("New", new RouteValueDictionary { { "Parent.Id", module.Id } }), new { @class = "add-sub-module", style = (level >= 2 ? "display:none" : "") })
                     @Html.ButtonEdit(Url.Action("Edit", new { module.Id }))
                     @Html.ButtonDelete(Url.Action("Delete", new { module.Id }))
                 </div>
@@ -32,7 +23,7 @@
         </li>
     }
 }
-<div class="row">
+<div class="row" data-module="modules" data-action="index">
     <div class="col-lg-12">
         <h1 class="page-header">
             Módulos
@@ -44,7 +35,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="dd" data-control="nestable" data-max-depth="3" data-organize-url="@Url.Action("Organazer")" data-change="sortModule">
+        <div class="dd" data-control="nestable" data-max-depth="3" data-organize-url="@Url.Action("Organazer")" data-change="onChangeModule" data-delete="onDeleteModule">
             <ol class="dd-list">
                 @TreeView(Model.OrderBy(x => x.Order), 0)
             </ol>

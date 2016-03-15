@@ -155,7 +155,9 @@
                             },
                             success: function (result) {
                                 if (result.type === 0) {
-                                    window.location.reload();
+                                    if (window[$nestable.data("delete")]) {
+                                        window[$nestable.data("delete")].call($button, $nestable);
+                                    }
                                 } else {
                                     $.thunder.alert(result.data || result.messages, {
                                         type: app.settings.getMessageType(result.type)

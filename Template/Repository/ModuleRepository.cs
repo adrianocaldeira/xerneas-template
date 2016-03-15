@@ -77,7 +77,7 @@ namespace Template.Repository
             using (var transaction = Session.BeginTransaction())
             {
                 var queryable = Session.Query<Module>().Where(x => x.Id != id 
-                    && x.Name.Trim().ToLower().Contains(name.Trim().ToLower()));
+                    && x.Name.Trim().ToLower() == name.Trim().ToLower());
 
                 if (parent == null || parent.Id == 0)
                 {
