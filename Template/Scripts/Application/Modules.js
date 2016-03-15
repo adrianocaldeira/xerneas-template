@@ -2,6 +2,7 @@
     $.each(options.functionalities, function(i) {
         options.functionalities[i].index = i;
     });
+
     app.modules.functionalities.data = options.functionalities;
     app.modules.functionalities.init();
 
@@ -97,7 +98,7 @@ app.modules.functionalities = {
         return functionalities;
     },
     form: function () {
-        window.beforeOnSave = function() {
+        this.addEvent("beforeOnSave", function() {
             var data = [];
             var $selectedHttpMethod = $("#SelectedHttpMethod");
 
@@ -106,10 +107,8 @@ app.modules.functionalities = {
             }
 
             return data;
-        };
-
-        window.successOnSave = function(result) {
+        }).addEvent("successOnSave", function (result) {
             window.parent.app.modules.functionalities.save(result.data);
-        };
+        });
     }
 };

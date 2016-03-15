@@ -19,15 +19,28 @@
             var module = $this.data("module");
             var action = $this.data("action");
             var parameters = window[$this.data("parameters") || {}] || $this.data("parameters");
+            var handler = null;
 
             if (app[module] && app[module][action]) {
-                app[module][action].call($this, parameters);
+                handler = app[module][action];
             } else {
                 var parts = module.split(".");
 
                 if (parts.length === 2 && app[parts[0]][parts[1]][action]) {
-                    app[parts[0]][parts[1]][action].call($this, parameters);
+                    handler = app[parts[0]][parts[1]][action];
                 }
+            }
+
+            if (handler) {
+                handler.call({
+                    container: $this,
+                    module: module,
+                    action: action,
+                    addEvent: function (event, method) {
+                        window[event] = method;
+                        return this;
+                    }
+                }, parameters);
             }
         });
 
@@ -142,13 +155,7 @@
                             },
                             success: function (result) {
                                 if (result.type === 0) {
-                                    //if (options.loadOnDelete) {
-                                    //    $.thunder.grid($grid, "reload");
-                                    //}
-
-                                    //if ($.isFunction(options.successOnDelete)) {
-                                    //    options.successOnDelete.call($button, $grid);
-                                    //}
+                                    window.location.reload();
                                 } else {
                                     $.thunder.alert(result.data || result.messages, {
                                         type: app.settings.getMessageType(result.type)
