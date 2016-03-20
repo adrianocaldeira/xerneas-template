@@ -16,9 +16,9 @@ app.modules.form = function (options) {
     app.modules.functionalities.data = options.functionalities;
     app.modules.functionalities.init();
 
-    window.onBeforeSave = function() {
+    this.addEvent("onBeforeSave", function() {
         return app.modules.functionalities.toParameters();
-    };
+    });
 };
 
 app.modules.functionalities = {

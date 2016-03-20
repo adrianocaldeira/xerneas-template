@@ -64,7 +64,7 @@
         }
     });
 
-    window.beforeSave = function () {
+    this.addEvent("beforeSave", function() {
         var data = [];
 
         $(":checkbox:checked", ".modal").each(function (i) {
@@ -74,5 +74,5 @@
         });
 
         return data;
-    };
+    });
 };
