@@ -41,12 +41,18 @@
                             <fieldset>
                                 <div id="message"></div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(x => x.UserName, new {@class = "form-control", placeholder = "Login ou e-mail de cadastro", autofocus = "autofocus"})
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" style="width: 14px;"></i></span>
+                                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", placeholder = "Login ou e-mail de cadastro", autofocus = "autofocus" })
+                                    </div>                                    
                                 </div>
                                 <div class="form-group">
-                                    @Html.PasswordFor(x => x.Password, new {@class = "form-control", placeholder = "Senha de acesso"})
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                        @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Senha de acesso" })
+                                    </div>                                    
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-default btn-block">Acessar</button>
+                                <button type="submit" class="btn btn-default btn-block">Acessar</button>
                             </fieldset>
                         }
                     </div>
