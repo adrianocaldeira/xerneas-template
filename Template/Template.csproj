@@ -260,6 +260,7 @@
     <Content Include="Content\icheck\skins\square\yellow.css" />
     <Content Include="Content\icheck\skins\square\yellow.png" />
     <Content Include="Content\icheck\skins\square\_all.css" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\jquery.nestable.css" />
     <Content Include="Content\sb-admin-2\css\sb-admin-2-custom.css" />
     <Content Include="Content\sb-admin-2\css\sb-admin-2.css" />
@@ -323,7 +324,6 @@
     <Content Include="Scripts\Application\Initialize.js" />
     <Content Include="Scripts\Application\UserProfiles.js" />
     <Content Include="Scripts\Application\Modules.js" />
-    <Content Include="Scripts\Application\Login.js" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\sb-admin-2\dist\font-awesome\fonts\fontawesome-webfont.woff" />

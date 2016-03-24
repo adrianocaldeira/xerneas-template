@@ -67,8 +67,8 @@
             var $form = $(this);
             var options = {
                 message: $form.data("message-selector") === undefined ? undefined : $form.data("message-selector"),
-                showMessageOnSuccess: $form.data("show-message-on-success") === undefined ? false : $form.data("show-message-on-success"),
-                redirectOnSuccess: $form.data("redirect-on-success") === undefined ? false : $form.data("redirect-on-success"),
+                showMessage: $form.data("show-message") === undefined ? true : $form.data("show-message"),
+                redirect: $form.data("redirect") === undefined ? false : $form.data("redirect"),
                 before: $form.data("before") === undefined ? undefined : $form.data("before"),
                 success: $form.data("success") === undefined ? undefined : $form.data("success"),
                 warning: $form.data("warning") === undefined ? undefined : $form.data("warning"),
@@ -94,8 +94,8 @@
                         options.success.call($form, result);
                     }
 
-                    if (options.redirectOnSuccess) {
-                        if (options.showMessageOnSuccess) {
+                    if (options.redirect) {
+                        if (options.showMessage) {
                             $.thunder.alert(result.data.message, {
                                 type: "success",
                                 onOk: function () {
@@ -106,7 +106,7 @@
                             window.location.href = result.data.url;
                         }
                     } else {
-                        if (options.showMessageOnSuccess) {
+                        if (options.showMessage) {
                             $.thunder.alert(result.data.message, { type: "success" });
                         }
                     }
@@ -262,12 +262,13 @@
 
         $.thunder.alert.defaultOptions.title = "Aviso Importante";
         $.thunder.alert.defaultOptions.type = "warning";
+        $.thunder.alert.defaultOptions.button.className = "btn btn-default";
 
         $.thunder.confirm.defaultOptions.title = "Confirmação";
         $.thunder.confirm.defaultOptions.button.yes.label = "Sim";
-        $.thunder.confirm.defaultOptions.button.yes.className = "btn btn-sm btn-success";
+        $.thunder.confirm.defaultOptions.button.yes.className = "btn btn-success";
         $.thunder.confirm.defaultOptions.button.no.label = "Não";
-        $.thunder.confirm.defaultOptions.button.no.className = "btn btn-sm btn-danger";
+        $.thunder.confirm.defaultOptions.button.no.className = "btn btn-danger";
     }
 };
 

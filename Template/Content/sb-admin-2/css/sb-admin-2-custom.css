@@ -65,7 +65,7 @@
     margin-bottom: 0;
 }
 
-#page-wrapper, #page-wrapper .panel-title, #page-wrapper a {
+#page-wrapper, #page-wrapper .panel-title, #page-wrapper a .fa {
     color: #777;
 }
 
@@ -89,6 +89,12 @@
 .thunder-confirm .modal-header {
     background: #337ab7;
     color: #fff;
+    -webkit-border-top-left-radius: 5px !important;
+    -webkit-border-top-right-radius: 5px !important;
+    -moz-border-radius-topleft: 5px !important;
+    -moz-border-radius-topright: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
 }
 
 .has-error .form-control {

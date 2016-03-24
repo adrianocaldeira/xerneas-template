@@ -43,7 +43,7 @@ namespace Template.Controllers
 
                 UserRepository.UpdateLastAccess(user);
 
-                return Success(model.ReturnUrl);
+                return Success(new { url = model.ReturnUrl });
             }
 
             return Notify(NotifyType.Warning, ModelState);

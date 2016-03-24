@@ -47,7 +47,6 @@ namespace Template
                                 , "~/scripts/handlebars-v{version}.js"
                                 , "~/scripts/application/app.js"
                                 , "~/scripts/application/initialize.js"
-                                , "~/scripts/application/login.js"
                                 , "~/scripts/application/modules.js"
                                 , "~/scripts/application/userProfiles.js"
                                 ));
