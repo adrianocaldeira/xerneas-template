@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Optimization;
@@ -31,7 +33,7 @@ namespace Template
             RouteTable.Routes.LowercaseUrls = true;
 
             #region Bundle 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = Convert.ToBoolean(ConfigurationManager.AppSettings["BundleTable.EnableOptimizations"]);
 
             BundleTable.Bundles.Add(new ScriptBundle("~/scripts/bundle")
                             .Include("~/scripts/jquery-{version}.js"
