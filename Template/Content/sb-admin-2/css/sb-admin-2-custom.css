@@ -382,3 +382,45 @@
     margin-bottom: 10px;   
 }
 /*#############################END TREEVIEW#############################*/
+
+
+/*#############################PANEL#############################*/
+.panel.panel-fullscreen {
+    z-index: 10060;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+.page-panel-fullscreen {
+    overflow: hidden;
+}
+.panel-heading .panel-heading {
+    min-height: 43px;
+}
+.panel-heading .panel-title {
+    min-height: 22px;
+}
+.panel-heading .panel-title > .actions {
+    padding: 0 0 5px 0;
+    float: right;
+    display: inline-block;
+}
+
+.panel-heading .panel-title > .caption {
+    padding: 3px 0 3px 0;
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+}
+.panel > .panel-title:after {
+    clear: both !important;
+}
+/*#############################PANEL#############################*/

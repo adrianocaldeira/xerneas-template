@@ -13,6 +13,19 @@
             return "";
         }
     },
+    getViewPort: function() {
+        var e = window,
+            a = "inner";
+        if (!("innerWidth" in window)) {
+            a = "client";
+            e = document.documentElement || document.body;
+        }
+
+        return {
+            width: e[a + "Width"],
+            height: e[a + "Height"]
+        };
+    },
     init: function () {
         $("[data-module]").each(function () {
             var $this = $(this);
@@ -244,7 +257,7 @@
         });
 
         $(document).ajaxComplete(function (e, response) {
-            if (response.getResponseHeader('Unauthorized-Url')) {
+            if (response.getResponseHeader("Unauthorized-Url")) {
                 $.thunder.alert("Sua sessão expirou e você será redirecionado para tela de autenticação do sistema.", {
                     onOk: function () {
                         window.location.href = response.getResponseHeader("Unauthorized-Url");
@@ -259,6 +272,32 @@
         });
         
         $(".make-switch").bootstrapSwitch();
+
+        $("body").on("click", ".panel > .panel-heading .fullscreen", function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            var $panel = $this.closest(".panel");
+            var $body = $("body");
+
+            if ($panel.hasClass("panel-fullscreen")) {
+                $this.removeClass("on").attr("title", "Expandir");;
+                $(".fa", $this).removeClass("fa-compress").addClass("fa-expand");
+                $panel.removeClass("panel-fullscreen");
+                $body.removeClass("page-panel-fullscreen");
+                $panel.children(".panel-body").css("height", "auto");
+            } else {
+                var height = app.settings.getViewPort().height -
+                    $panel.children(".panel-heading").outerHeight() -
+                    parseInt($panel.children(".panel-body").css("padding-top")) -
+                    parseInt($panel.children(".panel-body").css("padding-bottom"));
+
+                $this.addClass("on").attr("title", "Recolher");
+                $panel.addClass("panel-fullscreen");
+                $body.addClass("page-panel-fullscreen");
+                $panel.children(".panel-body").css("height", height);
+                $(".fa", $this).removeClass("fa-expand").addClass("fa-compress");
+            }
+        });
 
         $.thunder.alert.defaultOptions.title = "Aviso Importante";
         $.thunder.alert.defaultOptions.type = "warning";
