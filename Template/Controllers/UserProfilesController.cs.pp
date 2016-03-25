@@ -1,17 +1,18 @@
 using System;
+using System.Globalization;
 using System.Web.Mvc;
-using Template.Filters;
-using Template.Models;
-using Template.Models.Filters;
-using Template.Models.Views.UserProfiles;
-using Template.Properties;
-using Template.Repository;
+using $rootnamespace$.Filters;
+using $rootnamespace$.Models;
+using $rootnamespace$.Models.Filters;
+using $rootnamespace$.Models.Views.UserProfiles;
+using $rootnamespace$.Properties;
+using $rootnamespace$.Repository;
 using Thunder;
 using Thunder.Extensions;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 
-namespace Template.Controllers
+namespace $rootnamespace$.Controllers
 {
     [Authorization]
     [SessionPerRequest]

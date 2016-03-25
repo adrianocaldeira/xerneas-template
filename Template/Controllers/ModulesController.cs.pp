@@ -1,17 +1,17 @@
 using System.Linq;
 using System.Web.Mvc;
-using Template.Filters;
-using Template.Models.Extensions;
-using Template.Models.Views.Modules;
-using Template.Properties;
-using Template.Repository;
+using $rootnamespace$.Filters;
+using $rootnamespace$.Models.Extensions;
+using $rootnamespace$.Models.Views.Modules;
+using $rootnamespace$.Properties;
+using $rootnamespace$.Repository;
 using Thunder;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 using Thunder.Extensions;
-using Module = Template.Models.Module;
+using Module = $rootnamespace$.Models.Module;
 
-namespace Template.Controllers
+namespace $rootnamespace$.Controllers
 {
     [SessionPerRequest]
     [Authorization(IgnoreActions = "Organazer")]

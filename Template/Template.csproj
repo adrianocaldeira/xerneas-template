@@ -320,6 +320,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Orm\User.hbm.xml" />
     <EmbeddedResource Include="Models\Orm\UserProfile.hbm.xml" />
+    <None Include="Models\Orm\Functionality.hbm.xml.pp" />
+    <None Include="Models\Orm\Module.hbm.xml.pp">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\Orm\User.hbm.xml.pp" />
+    <None Include="Models\Orm\UserProfile.hbm.xml.pp" />
     <Content Include="Scripts\Application\App.js" />
     <Content Include="Scripts\Application\Initialize.js" />
     <Content Include="Scripts\Application\UserProfiles.js" />
@@ -363,36 +369,63 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Adapters\RequiredAttributeAdapter.cs.pp" />
     <Compile Include="Adapters\RequiredAttributeAdapter.cs" />
+    <None Include="Adapters\StringLengthAttributeAdapter.cs.pp" />
     <Compile Include="Adapters\StringLengthAttributeAdapter.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <None Include="App_Start\XerneasConfig.cs.pp" />
     <Compile Include="App_Start\XerneasConfig.cs" />
+    <None Include="Controllers\FunctionalitiesController.cs.pp" />
     <Compile Include="Controllers\FunctionalitiesController.cs" />
+    <None Include="Controllers\HomeController.cs.pp" />
     <Compile Include="Controllers\HomeController.cs" />
+    <None Include="Controllers\LayoutsController.cs.pp" />
     <Compile Include="Controllers\LayoutsController.cs" />
+    <None Include="Controllers\LoginController.cs.pp" />
     <Compile Include="Controllers\LoginController.cs" />
+    <None Include="Controllers\LogoffController.cs.pp" />
     <Compile Include="Controllers\LogoffController.cs" />
+    <None Include="Controllers\ModulesController.cs.pp" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <None Include="Controllers\UserProfilesController.cs.pp" />
     <Compile Include="Controllers\UserProfilesController.cs" />
+    <None Include="Controllers\UsersController.cs.pp" />
     <Compile Include="Controllers\UsersController.cs" />
+    <None Include="Filters\AuthorizationAttribute.cs.pp" />
     <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <None Include="Helpers\HtmlAttributesUtility.cs.pp" />
     <Compile Include="Helpers\HtmlAttributesUtility.cs" />
+    <None Include="Helpers\HtmlHelperExtensions.cs.pp" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <None Include="Models\Extensions\TreeViewExtensions.cs.pp" />
     <Compile Include="Models\Extensions\TreeViewExtensions.cs" />
+    <None Include="Models\Filters\UserFilter.cs.pp" />
     <Compile Include="Models\Filters\UserFilter.cs" />
+    <None Include="Models\Filters\UserProfileFilter.cs.pp" />
     <Compile Include="Models\Filters\UserProfileFilter.cs" />
+    <None Include="Models\Functionality.cs.pp" />
     <Compile Include="Models\Functionality.cs" />
+    <None Include="Models\Module.cs.pp" />
     <Compile Include="Models\Module.cs" />
+    <None Include="Models\User.cs.pp" />
     <Compile Include="Models\User.cs" />
+    <None Include="Models\UserProfile.cs.pp" />
     <Compile Include="Models\UserProfile.cs" />
+    <None Include="Models\Views\Functionalities\Form.cs.pp" />
     <Compile Include="Models\Views\Functionalities\Form.cs" />
+    <None Include="Models\Views\Login\Index.cs.pp" />
     <Compile Include="Models\Views\Login\Index.cs" />
+    <None Include="Models\Views\Modules\TreeView.cs.pp" />
     <Compile Include="Models\Views\Modules\TreeView.cs" />
+    <None Include="Models\Views\UserProfiles\Form.cs.pp" />
     <Compile Include="Models\Views\UserProfiles\Form.cs" />
+    <None Include="Models\Views\Users\Form.cs.pp" />
     <Compile Include="Models\Views\Users\Form.cs" />
+    <None Include="Models\Views\Users\Index.cs.pp" />
     <Compile Include="Models\Views\Users\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -400,13 +433,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Repository\IModuleRepository.cs.pp" />
     <Compile Include="Repository\IModuleRepository.cs" />
+    <None Include="Repository\IUserProfileRepository.cs.pp" />
     <Compile Include="Repository\IUserProfileRepository.cs" />
+    <None Include="Repository\IUserRepository.cs.pp" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <None Include="Repository\ModuleRepository.cs.pp" />
     <Compile Include="Repository\ModuleRepository.cs" />
+    <None Include="Repository\UserProfileRepository.cs.pp" />
     <Compile Include="Repository\UserProfileRepository.cs" />
+    <None Include="Repository\UserRepository.cs.pp" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Content Include="web.config.uninstall.xdt">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.config.install.xdt">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XerneasAuthentication.cs.pp" />
     <Compile Include="XerneasAuthentication.cs" />
+    <None Include="XerneasUserData.cs.pp" />
     <Compile Include="XerneasUserData.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -414,9 +461,13 @@
     <Content Include="packages.config" />
     <Content Include="Views\Functionalities\Form.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <None Include="Views\Functionalities\Form.cshtml.pp" />
+    <None Include="Views\Home\Index.cshtml.pp" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Layouts\Header.cshtml" />
+    <None Include="Views\Layouts\Menu.cshtml.pp" />
     <None Include="Views\Layouts\Menu.cshtml" />
+    <None Include="Views\Login\Index.cshtml.pp" />
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -424,11 +475,18 @@
     <Content Include="Views\Users\_List.cshtml" />
     <Content Include="Views\Users\Form.cshtml" />
     <Content Include="Views\Modules\Form.cshtml" />
+    <None Include="Views\Modules\Form.cshtml.pp" />
+    <None Include="Views\Modules\Index.cshtml.pp" />
     <None Include="Views\Modules\Index.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\UserProfiles\Index.cshtml" />
     <Content Include="Views\UserProfiles\_List.cshtml" />
     <Content Include="Views\UserProfiles\Form.cshtml" />
+    <None Include="Views\UserProfiles\Form.cshtml.pp" />
+    <None Include="Views\UserProfiles\_List.cshtml.pp" />
+    <None Include="Views\Users\Form.cshtml.pp" />
+    <None Include="Views\Users\Index.cshtml.pp" />
+    <None Include="Views\Users\_List.cshtml.pp" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

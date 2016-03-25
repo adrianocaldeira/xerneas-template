@@ -1,0 +1,52 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections>
+    <section name="hibernate-configuration" type="NHibernate.Cfg.ConfigurationSectionHandler, NHibernate" xdt:Transform="Remove" />
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net" xdt:Transform="Remove" />
+  </configSections>
+  <appSettings>
+    <add key="BundleTable.EnableOptimizations" value="false" xdt:Transform="Remove" />
+  </appSettings>
+  <system.web>
+    <authentication mode="Forms"  xdt:Transform="Remove" >
+      <forms loginUrl="~/login" cookieless="UseCookies" timeout="2880" name=".XERNEASFORMAUTH" path="/" />
+    </authentication>
+    <machineKey decryptionKey="23E78A0374D8AA9FF8374A14F70ABB28C470B2FFF331A8EA" validationKey="4512C0EB7C4F326A3C15BB08978C4A2CAD40B0252E3AA85F108E8D13D546924DED7DC20C2E6ABE13A382EC82E5101E240D1EDEC938D7AE527506D4448F7328B1" xdt:Transform="Insert" />
+  </system.web>
+  <hibernate-configuration xmlns="urn:nhibernate-configuration-2.2" xdt:Transform="Remove">
+    <session-factory name="$rootnamespace$">
+      <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+      <property name="connection.connection_string">
+        Data Source=localhost\developer;Initial Catalog=$rootnamespace$;User Id=sa;Password=123;
+      </property>
+      <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+      <property name="connection.isolation">ReadCommitted</property>
+      <property name="current_session_context_class">NHibernate.Context.WebSessionContext, NHibernate</property>
+      <property name="show_sql">true</property>
+      <property name="generate_statistics">true</property>
+      <mapping assembly="$rootnamespace$" />
+      <listener type="pre-update" class="Thunder.Data.Pattern.CreatedAndUpdatedPropertyEventListener, Thunder" />
+      <listener type="pre-insert" class="Thunder.Data.Pattern.CreatedAndUpdatedPropertyEventListener, Thunder" />
+    </session-factory>
+  </hibernate-configuration>
+
+  <log4net xdt:Transform="Remove">
+    <appender name="Trace" type="log4net.Appender.TraceAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%-5level %logger - %message %newline" />
+      </layout>
+    </appender>
+    <logger name="NHibernate.SQL" additivity="false">
+      <level value="DEBUG" />
+      <appender-ref ref="Trace" />
+    </logger>
+    <logger name="NHibernate">
+      <level value="WARN" />
+      <appender-ref ref="Trace" />
+    </logger>
+    <logger name="Application">
+      <level value="DEBUG" />
+      <appender-ref ref="Trace" />
+    </logger>
+  </log4net>
+</configuration>

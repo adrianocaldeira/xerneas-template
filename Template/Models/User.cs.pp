@@ -1,13 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using Template.Repository;
+using $rootnamespace$.Repository;
 using Thunder.ComponentModel.DataAnnotations;
 using Thunder.Data.Pattern;
 using Thunder.Extensions;
 using Thunder.Security;
 
-namespace Template.Models
+namespace $rootnamespace$.Models
 {
     /// <summary>
     ///     Usuário

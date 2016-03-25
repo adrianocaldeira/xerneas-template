@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Thunder.Data.Pattern;
 
-namespace Template.Models
+namespace $rootnamespace$.Models
 {
     /// <summary>
     ///     Funcionalida de um módulo do sistema

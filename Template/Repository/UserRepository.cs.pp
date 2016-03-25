@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
 using NHibernate.Linq;
-using Template.Models;
-using Template.Models.Filters;
+using $rootnamespace$.Models;
+using $rootnamespace$.Models.Filters;
 using Thunder.Collections;
 using Thunder.Collections.Extensions;
 using Thunder.Data;
 using Thunder.Data.Pattern;
 using Thunder.Security;
 
-namespace Template.Repository
+namespace $rootnamespace$.Repository
 {
     public class UserRepository : Repository<User,int>, IUserRepository
     {

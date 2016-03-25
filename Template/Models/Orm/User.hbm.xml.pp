@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="$rootnamespace$.Models.User, $rootnamespace$" table="Users">
+    <id name="Id">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="Profile" column="ProfileId" not-null="true" />
+
+    <property name="Name" length="100" not-null="true" index="idx_nome" />
+    <property name="Login" not-null="true" unique-key="idx_login_email" />
+    <property name="Email" length="100" not-null="true" unique-key="idx_login_email" />
+    <property name="Password" length="50" not-null="true" />
+    <property name="Salt" length="50" not-null="true" />
+    <property name="Active" not-null="true"/>
+    <property name="LastAccess" />
+    <property name="Created" not-null="true" />
+    <property name="Updated" not-null="true" />
+  </class>
+</hibernate-mapping>
