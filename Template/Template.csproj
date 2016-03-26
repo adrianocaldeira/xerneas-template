@@ -445,9 +445,11 @@
     <Compile Include="Repository\UserProfileRepository.cs" />
     <None Include="Repository\UserRepository.cs.pp" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Content Include="web.config.uninstall.xdt">
+    <Content Include="Web.config.uninstall.xdt">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\web.config.uninstall.xdt" />
+    <None Include="Views\web.config.install.xdt" />
     <None Include="Web.config.install.xdt">
       <SubType>Designer</SubType>
     </None>
@@ -462,7 +464,6 @@
     <Content Include="Views\Functionalities\Form.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <None Include="Views\Functionalities\Form.cshtml.pp" />
-    <None Include="Views\Home\Index.cshtml.pp" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Layouts\Header.cshtml" />
     <None Include="Views\Layouts\Menu.cshtml.pp" />

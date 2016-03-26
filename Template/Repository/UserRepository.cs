@@ -161,7 +161,7 @@ namespace Template.Repository
                 var query = Session.Query<User>();
 
                 if (filter.ByActive) query = query.Where(x => x.Active == filter.Active.Value);
-                if (filter.ByName) query = query.Where(x => x.Name.ToLower().Contains(filter.Name.ToLower()));
+                if (filter.ByName) query = query.Where(x => x.Name.ToLower().Contains(filter.Name.Trim().ToLower()));
                 if (filter.ByProfile) query = query.Where(x => x.Profile.Id == filter.Profile.Id);
 
                 var users = query.OrderBy(x => x.Name).Paging(filter.CurrentPage, filter.PageSize);

@@ -11,7 +11,7 @@
     <authentication mode="Forms"  xdt:Transform="Remove" >
       <forms loginUrl="~/login" cookieless="UseCookies" timeout="2880" name=".XERNEASFORMAUTH" path="/" />
     </authentication>
-    <machineKey decryptionKey="23E78A0374D8AA9FF8374A14F70ABB28C470B2FFF331A8EA" validationKey="4512C0EB7C4F326A3C15BB08978C4A2CAD40B0252E3AA85F108E8D13D546924DED7DC20C2E6ABE13A382EC82E5101E240D1EDEC938D7AE527506D4448F7328B1" xdt:Transform="Insert" />
+    <machineKey decryptionKey="23E78A0374D8AA9FF8374A14F70ABB28C470B2FFF331A8EA" validationKey="4512C0EB7C4F326A3C15BB08978C4A2CAD40B0252E3AA85F108E8D13D546924DED7DC20C2E6ABE13A382EC82E5101E240D1EDEC938D7AE527506D4448F7328B1" xdt:Transform="Remove" />
   </system.web>
   <hibernate-configuration xmlns="urn:nhibernate-configuration-2.2" xdt:Transform="Remove">
     <session-factory name="$rootnamespace$">

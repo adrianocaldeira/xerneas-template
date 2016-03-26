@@ -1,4 +1,4 @@
-﻿@model Template.Models.Views.Functionalities.Form
+﻿@model $rootnamespace$.Models.Views.Functionalities.Form
 @{
     Layout = "~/Views/Shared/_Modal.cshtml";
 }

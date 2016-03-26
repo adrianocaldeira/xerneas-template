@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.web.webPages.razor>
+    <pages pageBaseType="System.Web.Mvc.WebViewPage">
+      <namespaces>
+        <add namespace="System.Web.Optimization" xdt:Transform="Remove"/>
+        <add namespace="Thunder" xdt:Transform="Remove"/>
+        <add namespace="Thunder.Collections" xdt:Transform="Remove"/>
+        <add namespace="Thunder.Web.Mvc.Html" xdt:Transform="Remove"/>
+        <add namespace="$rootnamespace$.Helpers" xdt:Transform="Remove"/>
+        <add namespace="$rootnamespace$.Models.Filters" xdt:Transform="Remove"/>
+      </namespaces>
+    </pages>
+  </system.web.webPages.razor>
+</configuration>
