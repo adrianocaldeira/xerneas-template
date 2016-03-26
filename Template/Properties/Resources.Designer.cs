@@ -88,6 +88,15 @@ namespace Template.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não existe nenhum registro cadastrado..
+        /// </summary>
+        public static string EmptyResult {
+            get {
+                return ResourceManager.GetString("EmptyResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oops! Erro interno no servidor.&lt;br&gt;&lt;br&gt; Nossa equipe técnica já está analisando essa indisponibilidade, tente novamente mais tarde!.
         /// </summary>
         public static string InternalServerError {

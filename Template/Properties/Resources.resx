@@ -126,6 +126,9 @@
   <data name="DeleteBlockMessage" xml:space="preserve">
     <value>Esse registro não pode ser excluído, pois está relacionado com outras áreas do sistema.</value>
   </data>
+  <data name="EmptyResult" xml:space="preserve">
+    <value>Não existe nenhum registro cadastrado.</value>
+  </data>
   <data name="InternalServerError" xml:space="preserve">
     <value>Oops! Erro interno no servidor.&lt;br&gt;&lt;br&gt; Nossa equipe técnica já está analisando essa indisponibilidade, tente novamente mais tarde!</value>
   </data>

@@ -1,5 +1,6 @@
 ﻿@using Newtonsoft.Json
 @using Thunder.Web
+@using $rootnamespace$.Properties
 @model $rootnamespace$.Models.Module
 @{
     var functionalities = Model.Functionalities.Select(x => new
@@ -123,7 +124,7 @@
                                 </tr>
                                 {{/each}}
                             </script>
-                            @Html.Thunder().Notify(NotifyType.Information, "Não existe nenhuma funcionalidade cadastrada.", false, new { id = "panel-functionalities-empty", style = "margin-bottom: 0px;" })
+                            @Html.Thunder().Notify(NotifyType.Information, Resources.EmptyResult, false, new { id = "panel-functionalities-empty", style = "margin-bottom: 0px;" })
                         </div>
                     </div>
                     <div class="row">

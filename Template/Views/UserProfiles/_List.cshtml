@@ -1,4 +1,5 @@
-﻿@model IPaging<Template.Models.UserProfile>
+﻿@using Template.Properties
+@model IPaging<Template.Models.UserProfile>
 
 @if (Model.Any())
 {
@@ -46,5 +47,5 @@
 }
 else
 {
-    @Html.Thunder().Notify(NotifyType.Warning, "Não existe nenhum registro cadastrado.")
+    @Html.Thunder().Notify(NotifyType.Warning, Resources.EmptyResult)
 }

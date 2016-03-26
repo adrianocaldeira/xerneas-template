@@ -1,5 +1,5 @@
-﻿@model IPaging<$rootnamespace$.Models.UserProfile>
-
+﻿@using $rootnamespace$.Properties
+@model IPaging<$rootnamespace$.Models.UserProfile>
 @if (Model.Any())
 {
     <div class="row">
