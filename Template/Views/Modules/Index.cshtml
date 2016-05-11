@@ -26,7 +26,7 @@
 <div class="row" data-module="modules" data-action="index">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Módulos
+            M&oacute;dulos
             <span class="pull-right">
                 @Html.ButtonNew(Url.Action("New"), new { title = "Novo" })
             </span>
