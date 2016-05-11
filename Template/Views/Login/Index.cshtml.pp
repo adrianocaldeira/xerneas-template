@@ -33,6 +33,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4">
+								<br/><br />
                                 <img src="~/Content/images/logo.png" class="img-responsive" />
                             </div>
                             <div class="col-md-8">
