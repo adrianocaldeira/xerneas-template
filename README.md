@@ -1,2 +1,2 @@
-# kurumin
-ASP.NET MVC template with NHibernate
+# Xerneas Template
+Documentação em http://xerneas.acaldeira.me
