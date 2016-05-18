@@ -6,7 +6,7 @@
             {
                 var controllerName = ViewContext.ParentActionViewContext.RouteData.GetRequiredString("controller");
                 var actionName = ViewContext.ParentActionViewContext.RouteData.GetRequiredString("action");
-                
+
                 foreach (var module in Model.OrderBy(x => x.Order))
                 {
                     <li class="@(module.Contains(controllerName, actionName) ? "active" : "")">

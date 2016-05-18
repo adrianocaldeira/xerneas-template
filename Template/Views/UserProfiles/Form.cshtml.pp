@@ -90,7 +90,7 @@
 <div class="row" data-module="userProfiles" data-action="form">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Perfis de Usuário
+            Perfis de Usu&aacute;rio
             <span class="pull-right">
                 @Html.ButtonBack(Url.Action("Index"))
             </span>

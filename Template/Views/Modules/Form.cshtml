@@ -93,10 +93,10 @@
                                 <thead>
                                     <tr>
                                         <th class="align-middle">Nome</th>
-                                        <th class="align-middle">Descrição</th>
+                                        <th class="align-middle">Descri&ccedil;&atilde;o</th>
                                         <th class="align-middle">Controller</th>
                                         <th class="align-middle">Action</th>
-                                        <th class="align-middle align-center">Método Http</th>
+                                        <th class="align-middle align-center">M&eacute;todo Http</th>
                                         <th class="align-middle align-center">Principal</th>
                                         <th class="align-middle align-center col-edit">Editar</th>
                                         <th class="align-middle align-center col-delete">Excluir</th>
