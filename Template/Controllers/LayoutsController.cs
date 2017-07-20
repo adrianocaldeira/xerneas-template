@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Template.Models;
 using Template.Repository;
-using Thunder.Web.Mvc;
+using Thunder.NHibernate;
 using Controller = System.Web.Mvc.Controller;
 
 namespace Template.Controllers

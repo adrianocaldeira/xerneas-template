@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Thunder.Data.Pattern;
+using Thunder.Data;
 
 namespace Template.Models
 {

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using $rootnamespace$.Models;
 using $rootnamespace$.Repository;
-using Thunder.Web.Mvc;
+using Thunder.NHibernate;
 using Controller = System.Web.Mvc.Controller;
 
 namespace $rootnamespace$.Controllers

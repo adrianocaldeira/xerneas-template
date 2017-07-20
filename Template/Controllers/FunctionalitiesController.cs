@@ -3,7 +3,7 @@ using Template.Filters;
 using Template.Models;
 using Template.Models.Views.Functionalities;
 using Thunder;
-using Thunder.Web.Mvc;
+using Thunder.NHibernate;
 using Controller = Thunder.Web.Mvc.Controller;
 
 namespace Template.Controllers

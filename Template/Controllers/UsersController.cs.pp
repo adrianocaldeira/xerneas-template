@@ -10,6 +10,7 @@ using $rootnamespace$.Properties;
 using $rootnamespace$.Repository;
 using Thunder;
 using Thunder.Extensions;
+using Thunder.NHibernate;
 using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 

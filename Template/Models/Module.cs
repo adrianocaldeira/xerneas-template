@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using Template.Repository;
-using Thunder.Data.Pattern;
+using Thunder.Data;
 using Thunder.Extensions;
 
 namespace Template.Models

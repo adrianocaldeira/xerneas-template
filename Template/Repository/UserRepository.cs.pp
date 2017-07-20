@@ -5,8 +5,8 @@ using $rootnamespace$.Models;
 using $rootnamespace$.Models.Filters;
 using Thunder.Collections;
 using Thunder.Collections.Extensions;
-using Thunder.Data;
-using Thunder.Data.Pattern;
+using Thunder.NHibernate;
+using Thunder.NHibernate.Pattern;
 using Thunder.Security;
 
 namespace $rootnamespace$.Repository

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Template.Filters;
 using Template.Models;
-using Thunder.Data;
+using Thunder.NHibernate;
 
 namespace Template.Controllers
 {

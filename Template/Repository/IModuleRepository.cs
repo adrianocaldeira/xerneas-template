@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Template.Models;
-using Thunder.Data.Pattern;
+using Thunder.NHibernate.Pattern;
 
 namespace Template.Repository
 {

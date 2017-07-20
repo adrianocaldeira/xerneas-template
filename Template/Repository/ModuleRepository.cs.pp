@@ -2,7 +2,7 @@
 using System.Linq;
 using NHibernate.Linq;
 using $rootnamespace$.Models;
-using Thunder.Data.Pattern;
+using Thunder.NHibernate.Pattern;
 
 namespace $rootnamespace$.Repository
 {

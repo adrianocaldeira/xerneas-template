@@ -1,7 +1,7 @@
 ﻿using Template.Models;
 using Template.Models.Filters;
 using Thunder.Collections;
-using Thunder.Data.Pattern;
+using Thunder.NHibernate.Pattern;
 
 namespace Template.Repository
 {

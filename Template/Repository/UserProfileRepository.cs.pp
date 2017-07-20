@@ -4,7 +4,7 @@ using $rootnamespace$.Models;
 using $rootnamespace$.Models.Filters;
 using Thunder.Collections;
 using Thunder.Collections.Extensions;
-using Thunder.Data.Pattern;
+using Thunder.NHibernate.Pattern;
 
 namespace $rootnamespace$.Repository
 {

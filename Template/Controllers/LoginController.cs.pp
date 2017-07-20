@@ -2,7 +2,7 @@
 using $rootnamespace$.Models.Views.Login;
 using $rootnamespace$.Repository;
 using Thunder;
-using Thunder.Web.Mvc;
+using Thunder.NHibernate;
 using Controller = Thunder.Web.Mvc.Controller;
 
 namespace $rootnamespace$.Controllers

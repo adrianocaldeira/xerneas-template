@@ -6,9 +6,9 @@ using Template.Models.Views.Modules;
 using Template.Properties;
 using Template.Repository;
 using Thunder;
-using Thunder.Web.Mvc;
 using Controller = Thunder.Web.Mvc.Controller;
 using Thunder.Extensions;
+using Thunder.NHibernate;
 using Module = Template.Models.Module;
 
 namespace Template.Controllers

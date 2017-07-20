@@ -11,7 +11,7 @@ if (typeof jQuery.ui === "undefined") {
         $.thunder = {};
     };
 
-    $.thunder.version = "1.1.3";
+    $.thunder.version = "1.1.6";
 
     $.thunder.statusCode = {
         400: "Bad request",
@@ -110,7 +110,7 @@ if (typeof jQuery.ui === "undefined") {
     };
 
     $.thunder.closeModal = function () {
-        if ($.thunder.activeModal !== "undefined" && $.thunder.activeModal.size() > 0) {
+        if ($.thunder.activeModal !== "undefined" && $.thunder.activeModal.length > 0) {
             $.thunder.activeModal.dialog("close");
         }
     };
@@ -193,7 +193,7 @@ if (typeof jQuery.ui === "undefined") {
         var $footer = $("<div class=\"modal-footer\"></div>");
         var $ok = $("<button type=\"button\"></button>");
 
-        if ($this.size() === 0) {
+        if ($this.length === 0) {
             $this = $("<div></div>").addClass(defaults.className);
             $("body").append($this);
         }
@@ -237,7 +237,8 @@ if (typeof jQuery.ui === "undefined") {
         });
 
         $this.modal({
-            keyboard: false
+            keyboard: false,
+			backdrop: "static"
         });
     };
 
@@ -270,7 +271,7 @@ if (typeof jQuery.ui === "undefined") {
         var $yes = $("<button type=\"button\"></button>");
         var $no = $("<button type=\"button\"></button>");
         
-        if ($this.size() === 0) {
+        if ($this.length === 0) {
             $this = $("<div></div>").addClass(defaults.className);
             $("body").append($this);
         }
@@ -308,7 +309,8 @@ if (typeof jQuery.ui === "undefined") {
             .append($dialog);
 
         $this.modal({
-            keyboard: false
+            keyboard: false,
+			backdrop: "static"
         });
     };
 
@@ -451,7 +453,7 @@ if (typeof jQuery.ui === "undefined") {
                     $formToIframe.submit().remove();
                 }
 
-                $iframe.load(function () {
+                $iframe.on("load", function () {
                     $iframe.show();
                     $loading.remove();
 
@@ -778,7 +780,7 @@ if (typeof jQuery.ui === "undefined") {
                                             if (this.key !== undefined) {
                                                 var $field = $("[name='" + this.key + "'],#" + this.key, $form);
 
-                                                if ($field.closest(".form-group").size() > 0) {
+                                                if ($field.closest(".form-group").length > 0) {
                                                     $field.closest(".form-group").addClass("has-error");
                                                 } else {
                                                     $field.addClass(defaults.className + "-error");
@@ -1163,7 +1165,7 @@ if (typeof jQuery.ui === "undefined") {
     
     $.thunder.openModal("[data-thunder-plugin=modal]");
     
-    if($("[data-window=modal]").size() > 0) {
+    if($("[data-window=modal]").length > 0) {
         if ($.thunder.utility().queryString("forceFocusOnLoadInModal") === "true") {
             window.setTimeout(function() {
                 $("input:visible:not(input[type='hidden'],:disabled),select:visible:not(:disabled),textarea:visible:not(:disabled)").filter(":first").focus();
