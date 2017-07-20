@@ -10,12 +10,12 @@ using Thunder.Extensions;
 namespace $rootnamespace$.Models
 {
     /// <summary>
-    ///     Perfil de usu·rio
+    ///     Perfil de usu√°rio
     /// </summary>
     public class UserProfile : Persist<UserProfile, int>
     {
         /// <summary>
-        ///     Inicializa uma nova inst‚ncia da classe <see cref="UserProfile" />.
+        ///     Inicializa uma nova inst√¢ncia da classe <see cref="UserProfile" />.
         /// </summary>
         public UserProfile()
         {
@@ -23,7 +23,7 @@ namespace $rootnamespace$.Models
         }
 
         /// <summary>
-        ///     Recupera ou define cÛdigo
+        ///     Recupera ou define c√≥digo
         /// </summary>
         [Display(Name = "Perfil")]
         public new virtual int Id
@@ -53,17 +53,17 @@ namespace $rootnamespace$.Models
         public virtual bool Active { get; set; }
 
         /// <summary>
-        ///     Recupera ou define descriÁ„o de auditÛria
+        ///     Recupera ou define descri√ß√£o de audit√≥ria
         /// </summary>
         public virtual string AuditDescription { get; set; }
 
         /// <summary>
-        ///     Recupera ou define usu·rio de auditÛria
+        ///     Recupera ou define usu√°rio de audit√≥ria
         /// </summary>
         public virtual string AuditUser { get; set; }
 
         /// <summary>
-        ///     Recupera ou define grupo referÍncia de auditÛria
+        ///     Recupera ou define grupo refer√™ncia de audit√≥ria
         /// </summary>
         public virtual string AuditGroupReference { get; set; }
 
@@ -77,7 +77,7 @@ namespace $rootnamespace$.Models
         }
 
         /// <summary>
-        ///     Possui acesso ao mÛdulo do sistema
+        ///     Possui acesso ao m√≥dulo do sistema
         /// </summary>
         /// <param name="module">
         ///     <see cref="Module" />
@@ -89,7 +89,7 @@ namespace $rootnamespace$.Models
         }
 
         /// <summary>
-        ///     Possui acesso a funcionalidade de um mÛdulo
+        ///     Possui acesso a funcionalidade de um m√≥dulo
         /// </summary>
         /// <param name="functionality">
         ///     <see cref="Functionality" />
@@ -112,7 +112,7 @@ namespace $rootnamespace$.Models
 
             if (repository.ExistName(Id, Name))
             {
-                modelState.AddModelError("Name", "O nome informado j· existe.");
+                modelState.AddModelError("Name", "O nome informado j√° existe.");
             }
 
             return modelState.IsValid;

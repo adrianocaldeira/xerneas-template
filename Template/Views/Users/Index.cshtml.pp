@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Usuários
+            Usu&aacute;rios
             <span class="pull-right">
                 @Html.ButtonNew(Url.Action("New"), new { title = "Novo" })
             </span>

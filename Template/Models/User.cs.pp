@@ -10,7 +10,7 @@ using Thunder.Security;
 namespace $rootnamespace$.Models
 {
     /// <summary>
-    ///     Usu·rio
+    ///     Usu√°rio
     /// </summary>
     public class User : Persist<User, int>{
 
@@ -38,7 +38,7 @@ namespace $rootnamespace$.Models
         ///     Recupera ou define e-mail
         /// </summary>
         [Required]
-        [Email(ErrorMessage = "E-mail informado È inv·lido.")]
+        [Email(ErrorMessage = "E-mail informado √© inv√°lido.")]
         [StringLength(100)]
         [Display(Name = "E-mail")]
         public virtual string Email { get; set; }
@@ -63,7 +63,7 @@ namespace $rootnamespace$.Models
         public virtual string Salt { get; set; }
 
         /// <summary>
-        ///     Recupera ou define ˙ltima data de acesso
+        ///     Recupera ou define √∫ltima data de acesso
         /// </summary>
         public virtual DateTime? LastAccess { get; set; }
 
@@ -104,19 +104,19 @@ namespace $rootnamespace$.Models
         /// <param name="repository">
         ///     <see cref="IUserRepository" />
         /// </param>
-        /// <returns>V·lido</returns>
+        /// <returns>V√°lido</returns>
         public virtual bool IsValid(ModelStateDictionary modelState, IUserRepository repository)
         {
             if (modelState.IsValid)
             {
                 if (repository.ExistLogin(Id, Login))
                 {
-                    modelState.AddModelError("User.Login", "O login informado j· existe.");
+                    modelState.AddModelError("User.Login", "O login informado j√° existe.");
                 }
 
                 if (repository.ExistEmail(Id, Email))
                 {
-                    modelState.AddModelError("User.Email", "O e-mail informado j· existe.");
+                    modelState.AddModelError("User.Email", "O e-mail informado j√° existe.");
                 }
             }
             else

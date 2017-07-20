@@ -4,7 +4,7 @@ using Thunder.Data;
 namespace $rootnamespace$.Models
 {
     /// <summary>
-    ///     Funcionalida de um mÛdulo do sistema
+    ///     Funcionalida de um m√≥dulo do sistema
     /// </summary>
     public class Functionality : Persist<Functionality, int>
     {
@@ -21,13 +21,13 @@ namespace $rootnamespace$.Models
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///     Recupera ou define descriÁ„o
+        ///     Recupera ou define descri√ß√£o
         /// </summary>
-        [Display(Name = "DescriÁ„o")]
+        [Display(Name = "Descri√ß√£o")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        ///     Recupera ou define aÁ„o
+        ///     Recupera ou define a√ß√£o
         /// </summary>
         [Required]
         [Display(Name = "Nome da Action")]
@@ -41,14 +41,14 @@ namespace $rootnamespace$.Models
         public virtual string Controller { get; set; }
 
         /// <summary>
-        ///     Recupera ou define mÈtodo http
+        ///     Recupera ou define m√©todo http
         /// </summary>
         [Required]
-        [Display(Name = "MÈtodo HTTP")]
+        [Display(Name = "M√©todo HTTP")]
         public virtual string HttpMethod { get; set; }
 
         /// <summary>
-        ///     Recupera ou define se a funcionalidade È a padr„o do mÛdulo
+        ///     Recupera ou define se a funcionalidade √© a padr√£o do m√≥dulo
         /// </summary>
         [Display(Name = "Principal")]
         public virtual bool Default { get; set; }
