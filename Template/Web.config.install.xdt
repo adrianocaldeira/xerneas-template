@@ -30,8 +30,6 @@
       <property name="show_sql">true</property>
       <property name="generate_statistics">true</property>
       <mapping assembly="$rootnamespace$" />
-      <listener type="pre-update" class="Thunder.Data.Pattern.CreatedAndUpdatedPropertyEventListener, Thunder" />
-      <listener type="pre-insert" class="Thunder.Data.Pattern.CreatedAndUpdatedPropertyEventListener, Thunder" />
     </session-factory>
   </hibernate-configuration>
 

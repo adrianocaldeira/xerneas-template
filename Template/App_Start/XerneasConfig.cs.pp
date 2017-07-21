@@ -9,6 +9,10 @@ using log4net.Config;
 using Thunder.Web.Mvc.Binders;
 using RequiredAttributeAdapter = $rootnamespace$.Adapters.RequiredAttributeAdapter;
 using StringLengthAttributeAdapter = $rootnamespace$.Adapters.StringLengthAttributeAdapter;
+using System.Collections.Generic;
+using NHibernate.Event;
+using Thunder.NHibernate;
+using Thunder.NHibernate.Pattern;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof($rootnamespace$.XerneasConfig), "Start")]
 namespace $rootnamespace$
@@ -31,6 +35,12 @@ namespace $rootnamespace$
             ValidationExtensions.ResourceClassKey = "Resources";
 
             RouteTable.Routes.LowercaseUrls = true;
+
+            SessionManager.Listeners = new Dictionary<ListenerType, object[]>
+            {
+                {ListenerType.PreInsert, new IPreInsertEventListener[] {new CreatedAndUpdatedPropertyEventListener()}},
+                {ListenerType.PreUpdate, new IPreUpdateEventListener[] {new CreatedAndUpdatedPropertyEventListener()}}
+            };
 
             #region Bundle 
             BundleTable.EnableOptimizations = Convert.ToBoolean(ConfigurationManager.AppSettings["BundleTable.EnableOptimizations"]);
