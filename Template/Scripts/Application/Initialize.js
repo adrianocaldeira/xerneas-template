@@ -66,7 +66,7 @@
                         theme: "bootstrap"
                     });
             };
-            if ($("[data-window=\"modal\"]").size() > 0) {
+            if ($("[data-window=\"modal\"]").length > 0) {
                 window.setTimeout(function() {
                     bind();
                 }, 0);
