@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace $rootnamespace$.Properties {
+namespace Template.Properties {
     using System;
     
     
